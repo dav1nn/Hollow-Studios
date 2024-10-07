@@ -1146,7 +1146,6 @@ GameObject:
   - component: {fileID: 1323180694}
   - component: {fileID: 1323180693}
   - component: {fileID: 1323180695}
-  - component: {fileID: 1323180696}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1224,20 +1223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 1323180693}
---- !u!114 &1323180696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323180691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a596063c906708849947e30165ab6420, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage: {fileID: 1323180693}
-  videoPlayer: {fileID: 1018267235}
 --- !u!1 &1868794552
 GameObject:
   m_ObjectHideFlags: 0
