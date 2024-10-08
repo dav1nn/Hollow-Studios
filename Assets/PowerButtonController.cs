@@ -13,32 +13,38 @@ public class PowerButtonController : MonoBehaviour
 
     void Start()
     {
-
         videoPlayer.gameObject.SetActive(false);
-
         powerButton.onClick.AddListener(OnPowerButtonClick);
+    }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !isVideoPlaying)
+        {
+            PlayVideo();
+        }
     }
 
     void OnPowerButtonClick()
     {
         if (!isVideoPlaying)
         {
-            powerButton.interactable = false;
-
-            videoPlayer.gameObject.SetActive(true);
-            videoPlayer.Play();
-
-            isVideoPlaying = true;
-
-            videoPlayer.loopPointReached += OnVideoEnd;
+            PlayVideo();
         }
+    }
+
+    void PlayVideo()
+    {
+        powerButton.interactable = false;
+        videoPlayer.gameObject.SetActive(true);
+        videoPlayer.Play();
+        isVideoPlaying = true;
+        videoPlayer.loopPointReached += OnVideoEnd;
     }
 
     void OnVideoEnd(VideoPlayer vp)
     {
         vp.loopPointReached -= OnVideoEnd;
-
         SceneManager.LoadScene(nextSceneName);
     }
 }
