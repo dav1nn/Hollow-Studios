@@ -550,7 +550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerButton: {fileID: 1861006744}
   videoPlayer: {fileID: 1738016564}
-  nextSceneName: Login
+  nextSceneName: Register
 --- !u!4 &738488614
 Transform:
   m_ObjectHideFlags: 0
