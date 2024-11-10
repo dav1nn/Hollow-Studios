@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170df0cf9e3129a468a3dbb0bdf4bde8, type: 3}
+  m_Name: DialogueData_Intro
+  m_EditorClassIdentifier: 
+  playerOption1: Hey...
+  playerOption2: Whos this?
+  playerOption3: How are you messaging me?
+  npcResponseForOption1: How's the computer treating you?
+  npcResponseForOption2: Someone you will get to know
+  npcResponseForOption3: On my computer duh
+  nextDialogueForOption1: {fileID: 11400000, guid: 0ece2ac8808232b45b10041338563613, type: 2}
+  nextDialogueForOption2: {fileID: 0}
+  nextDialogueForOption3: {fileID: 0}
