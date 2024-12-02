@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Profile1
+  - Profile2
+  - Profile3
+  - Profile4
+  - Profile5
   layers:
   - Default
   - TransparentFX
