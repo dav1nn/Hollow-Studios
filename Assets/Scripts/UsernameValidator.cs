@@ -13,6 +13,7 @@ public class UsernameValidator : MonoBehaviour
     private string systemUsername;
     private Coroutine typewriterCoroutine;
     private int invalidAttempts = 0;
+    private bool isFinalMessageDisplayed = false; 
 
     void Start()
     {
@@ -26,6 +27,12 @@ public class UsernameValidator : MonoBehaviour
 
     void ValidateAndProceed()
     {
+        
+        if (isFinalMessageDisplayed)
+        {
+            return;
+        }
+
         if (typewriterCoroutine != null)
         {
             StopCoroutine(typewriterCoroutine);
@@ -37,13 +44,20 @@ public class UsernameValidator : MonoBehaviour
         {
             invalidAttempts++;
 
-            string feedbackMessage = GetEscalatedFeedbackMessage();
-            feedbackText.gameObject.SetActive(true);
-            typewriterCoroutine = StartCoroutine(TypewriterEffect(feedbackMessage));
-
+            
             if (invalidAttempts >= 4)
             {
+                string finalMessage = "Fine. Do whatever you want.";
+                feedbackText.gameObject.SetActive(true);
+                isFinalMessageDisplayed = true; 
+                typewriterCoroutine = StartCoroutine(TypewriterEffect(finalMessage));
                 StartCoroutine(AllowSceneChangeAfterDelay(2f)); 
+            }
+            else
+            {
+                string feedbackMessage = GetEscalatedFeedbackMessage();
+                feedbackText.gameObject.SetActive(true);
+                typewriterCoroutine = StartCoroutine(TypewriterEffect(feedbackMessage));
             }
         }
         else
@@ -64,8 +78,6 @@ public class UsernameValidator : MonoBehaviour
                 return $"I really think {systemUsername} suits you better.";
             case 3:
                 return $"{systemUsername} is your real name. Why are you avoiding it?";
-            case 4:
-                return $"Fine. Do whatever you want."; 
             default:
                 return $"Why not use a better name? Like this: {systemUsername}";
         }
@@ -83,12 +95,17 @@ public class UsernameValidator : MonoBehaviour
 
     IEnumerator AllowSceneChangeAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay); 
+        yield return new WaitForSeconds(delay);
         LoadNextScene();
     }
 
     private void LoadNextScene()
     {
+        string enteredUsername = usernameField.text;
+
+        PlayerPrefs.SetString("PlayerUsername", enteredUsername);
+        PlayerPrefs.Save();
+
         SceneManager.LoadScene("Register2");
     }
 
