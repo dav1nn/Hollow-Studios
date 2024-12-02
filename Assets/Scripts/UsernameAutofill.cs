@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using System.Collections; // Add this namespace to use IEnumerator
+using System.Collections;
 
 public class UsernameAutofill : MonoBehaviour
 {
