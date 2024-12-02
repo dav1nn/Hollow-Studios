@@ -339,10 +339,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d499e3e3f3544524c954ac53fdfa6a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  welcomeText: {fileID: 2068125169}
-  colorDropdown: {fileID: 0}
-  animalDropdown: {fileID: 0}
-  confirmButton: {fileID: 0}
+  nextButton: {fileID: 776269872}
+  profilePictures:
+  - {fileID: 166711440}
+  - {fileID: 75763967}
+  - {fileID: 1059024318}
+  - {fileID: 151816112}
+  - {fileID: 219160266}
 --- !u!4 &114243400
 Transform:
   m_ObjectHideFlags: 0
@@ -1129,7 +1132,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 776269873}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776269875}
+        m_TargetAssemblyTypeName: ProfilePictureSelector, Assembly-CSharp
+        m_MethodName: SaveProfileSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &776269873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2240,7 +2255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1776758666
 RectTransform:
   m_ObjectHideFlags: 0

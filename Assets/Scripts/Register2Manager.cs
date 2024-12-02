@@ -1,32 +1,61 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Register2Manager : MonoBehaviour
 {
-    public TextMeshProUGUI welcomeText;
-    public TMP_Dropdown colorDropdown;  
-    public TMP_Dropdown animalDropdown; 
-    public Button confirmButton;       
+    public Button nextButton;
+    public Image[] profilePictures; 
+    private int selectedPictureIndex = -1; 
 
     void Start()
     {
-  
-        string username = PlayerPrefs.GetString("PlayerUsername", "User");
-        welcomeText.text = $"Hi, {username}. You're almost ready.";
+        nextButton.interactable = false;
 
-        confirmButton.onClick.AddListener(SavePreferences);
+        for (int i = 0; i < profilePictures.Length; i++)
+        {
+            int index = i; 
+            profilePictures[i].GetComponent<Button>().onClick.AddListener(() => SelectProfilePicture(index));
+        }
+
+        nextButton.onClick.AddListener(GoToDesktopScene);
     }
 
-    void SavePreferences()
+    void SelectProfilePicture(int index)
     {
-        string favoriteColor = colorDropdown.options[colorDropdown.value].text;
-        string favoriteAnimal = animalDropdown.options[animalDropdown.value].text;
+        selectedPictureIndex = index;
 
-        PlayerPrefs.SetString("FavoriteColor", favoriteColor);
-        PlayerPrefs.SetString("FavoriteAnimal", favoriteAnimal);
-        PlayerPrefs.Save();
+        nextButton.interactable = true;
 
-        Debug.Log($"Preferences Saved: Color={favoriteColor}, Animal={favoriteAnimal}");
+        HighlightSelectedPicture(index);
+
+        Debug.Log($"Profile picture {index} selected.");
+    }
+
+    void HighlightSelectedPicture(int index)
+    {
+ 
+        foreach (var picture in profilePictures)
+        {
+            picture.color = Color.white; 
+        }
+
+        profilePictures[index].color = Color.green;
+    }
+
+    void GoToDesktopScene()
+    {
+        if (selectedPictureIndex >= 0)
+        {
+
+            PlayerPrefs.SetInt("SelectedProfilePicture", selectedPictureIndex);
+            PlayerPrefs.Save();
+
+            SceneManager.LoadScene("Login");
+        }
+        else
+        {
+            Debug.LogWarning("No profile picture selected.");
+        }
     }
 }
