@@ -1,15 +1,15 @@
-using UnityEngine;  // This is required for Unity-specific components like AudioSource
+using UnityEngine;  
 
 public class MouseClickSound : MonoBehaviour
 {
-    public AudioClip leftClickSound;  // Assign this in the Inspector
+    public AudioClip leftClickSound;  
     private AudioSource audioSource;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
 
-        // Check if the AudioClip is assigned
+        
         if (leftClickSound == null)
         {
             Debug.LogError("Left Click Sound is not assigned in the Inspector.");
@@ -18,7 +18,7 @@ public class MouseClickSound : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))  // Left mouse button
+        if (Input.GetMouseButtonDown(0))  
         {
             PlayLeftClickSound();
         }
