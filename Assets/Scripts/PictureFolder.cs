@@ -1,52 +1,56 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro; 
 
 public class PictureFolder : MonoBehaviour
 {
-    [SerializeField] private GameObject picturePrefab; 
-    [SerializeField] private Transform pictureGrid; 
-    [SerializeField] private Sprite[] pictureSprites; 
-    [SerializeField] private GameObject enlargePanel; 
+    [SerializeField] private GameObject picturePrefab;
+    [SerializeField] private Transform pictureGrid;
+    [SerializeField] private Sprite[] pictureSprites;
+    [SerializeField] private string[] pictureDescriptions;
+    [SerializeField] private GameObject enlargePanel;
     [SerializeField] private Image enlargeImage;
-    [SerializeField] private GameObject folderPanel; 
+    [SerializeField] private TextMeshProUGUI enlargeText; 
+    [SerializeField] private GameObject folderPanel;
 
-    private void OnEnable() 
+    private void OnEnable()
     {
         PopulateGrid();
     }
 
     private void PopulateGrid()
     {
-        
         foreach (Transform child in pictureGrid)
         {
             Destroy(child.gameObject);
         }
 
-        
-        foreach (Sprite sprite in pictureSprites)
+        for (int i = 0; i < pictureSprites.Length; i++)
         {
+            Sprite sprite = pictureSprites[i];
+            string description = i < pictureDescriptions.Length ? pictureDescriptions[i] : "No description available";
+
             GameObject newPicture = Instantiate(picturePrefab, pictureGrid);
             Image imageComponent = newPicture.GetComponent<Image>();
             if (imageComponent != null)
             {
                 imageComponent.sprite = sprite;
 
-                
                 Button button = newPicture.GetComponent<Button>();
                 if (button != null)
                 {
-                    button.onClick.AddListener(() => EnlargeImage(sprite));
+                    button.onClick.AddListener(() => EnlargeImage(sprite, description));
                 }
             }
         }
     }
 
-    private void EnlargeImage(Sprite sprite)
+    private void EnlargeImage(Sprite sprite, string description)
     {
-        if (enlargePanel != null && enlargeImage != null)
+        if (enlargePanel != null && enlargeImage != null && enlargeText != null)
         {
             enlargeImage.sprite = sprite;
+            enlargeText.text = description; 
             enlargePanel.SetActive(true);
         }
     }
@@ -67,6 +71,3 @@ public class PictureFolder : MonoBehaviour
         }
     }
 }
-
-
-
