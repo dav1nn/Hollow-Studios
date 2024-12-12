@@ -7,7 +7,8 @@ public class PictureFolder : MonoBehaviour
     [SerializeField] private Transform pictureGrid; 
     [SerializeField] private Sprite[] pictureSprites; 
     [SerializeField] private GameObject enlargePanel; 
-    [SerializeField] private Image enlargeImage;      
+    [SerializeField] private Image enlargeImage;
+    [SerializeField] private GameObject folderPanel; 
 
     private void OnEnable() 
     {
@@ -57,6 +58,15 @@ public class PictureFolder : MonoBehaviour
             enlargePanel.SetActive(false);
         }
     }
+
+    public void CloseFolder()
+    {
+        if (folderPanel != null)
+        {
+            folderPanel.SetActive(false);
+        }
+    }
 }
+
 
 
