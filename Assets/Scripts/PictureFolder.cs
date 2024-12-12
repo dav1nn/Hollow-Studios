@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +6,8 @@ public class PictureFolder : MonoBehaviour
     [SerializeField] private GameObject picturePrefab; 
     [SerializeField] private Transform pictureGrid; 
     [SerializeField] private Sprite[] pictureSprites; 
+    [SerializeField] private GameObject enlargePanel; 
+    [SerializeField] private Image enlargeImage;      
 
     private void OnEnable() 
     {
@@ -30,8 +30,33 @@ public class PictureFolder : MonoBehaviour
             if (imageComponent != null)
             {
                 imageComponent.sprite = sprite;
+
+                
+                Button button = newPicture.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.onClick.AddListener(() => EnlargeImage(sprite));
+                }
             }
         }
     }
+
+    private void EnlargeImage(Sprite sprite)
+    {
+        if (enlargePanel != null && enlargeImage != null)
+        {
+            enlargeImage.sprite = sprite;
+            enlargePanel.SetActive(true);
+        }
+    }
+
+    public void CloseEnlargePanel()
+    {
+        if (enlargePanel != null)
+        {
+            enlargePanel.SetActive(false);
+        }
+    }
 }
+
 
