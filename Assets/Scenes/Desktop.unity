@@ -1589,7 +1589,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47.951767, y: 8.6098}
+  m_AnchoredPosition: {x: -74, y: -47}
   m_SizeDelta: {x: 80.9058, y: 133.374}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1142225537
@@ -1642,14 +1642,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4918fe01835eca4a8cef03fff7e711b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  picturePrefab: {fileID: 1142225535}
-  pictureGrid: {fileID: 803874936}
+  picturePrefab: {fileID: 0}
+  pictureGrid: {fileID: 0}
   pictureSprites: []
   pictureDescriptions: []
   enlargePanel: {fileID: 0}
   enlargeImage: {fileID: 0}
   enlargeText: {fileID: 0}
-  folderPanel: {fileID: 0}
+  folderPanel: {fileID: 1142225535}
 --- !u!1 &1235743179
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,7 +2301,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1075379413}
+      - m_Target: {fileID: 1142225539}
         m_TargetAssemblyTypeName: PictureFolder, Assembly-CSharp
         m_MethodName: CloseFolder
         m_Mode: 1
