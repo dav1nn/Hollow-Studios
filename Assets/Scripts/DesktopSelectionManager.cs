@@ -4,22 +4,17 @@ using UnityEngine.UI;
 
 public class DesktopSelectionManager : MonoBehaviour
 {
-    [Header("References")]
     public Camera uiCamera;
     public RectTransform selectionBox;
     public List<RectTransform> iconList;
-
-    [Header("Double Click Settings")]
+    public GameObject desktopLayer;
+    public List<GameObject> folderObjects;
     public float doubleClickThreshold = 0.3f;
 
     private bool isSelecting = false;
     private Vector2 startPos;
     private Vector2 endPos;
-
     private HashSet<RectTransform> selectedIcons = new HashSet<RectTransform>();
-
-    private RectTransform lastClickedIcon = null;
-    private float lastClickTime = 0f;
 
     void Start()
     {
@@ -31,28 +26,30 @@ public class DesktopSelectionManager : MonoBehaviour
 
     void Update()
     {
+        if (!IsMouseOnDesktopLayer() && !isSelecting)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
-            RectTransform clickedIcon = GetIconUnderMouse();
-            if (clickedIcon != null)
+            if (!IsMouseOnDesktopLayer() || IsMouseOnFolderObject())
             {
-                HandleIconClick(clickedIcon);
+                return;
             }
-            else
-            {
-                ClearAllSelections();
-                isSelecting = true;
-                startPos = GetMousePositionInCanvas();
-                if (selectionBox != null)
-                    selectionBox.gameObject.SetActive(true);
-            }
+
+            ClearAllSelections();
+            isSelecting = true;
+            startPos = GetMousePositionInCanvas();
+            if (selectionBox != null)
+                selectionBox.gameObject.SetActive(true);
         }
 
         if (Input.GetMouseButton(0) && isSelecting)
         {
             endPos = GetMousePositionInCanvas();
             UpdateSelectionBoxVisual();
-            UpdateIconHighlights(); 
+            UpdateIconHighlights();
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -65,30 +62,6 @@ public class DesktopSelectionManager : MonoBehaviour
                     selectionBox.gameObject.SetActive(false);
                 }
             }
-        }
-    }
-
-    private void HandleIconClick(RectTransform icon)
-    {
-        float currentTime = Time.time;
-
-        if (icon == lastClickedIcon && (currentTime - lastClickTime) < doubleClickThreshold)
-        {
-            if (selectedIcons.Contains(icon))
-            {
-                UnhighlightIcon(icon);
-                selectedIcons.Remove(icon);
-            }
-            lastClickedIcon = null;
-        }
-        else
-        {
-            ClearAllSelections();
-            HighlightIcon(icon);
-            selectedIcons.Add(icon);
-
-            lastClickedIcon = icon;
-            lastClickTime = currentTime;
         }
     }
 
@@ -146,6 +119,12 @@ public class DesktopSelectionManager : MonoBehaviour
 
         selectionBox.anchoredPosition = center;
         selectionBox.sizeDelta = new Vector2(width, height);
+
+        if (desktopLayer != null)
+        {
+            int desktopIndex = desktopLayer.transform.GetSiblingIndex();
+            selectionBox.transform.SetSiblingIndex(desktopIndex + 1);
+        }
     }
 
     private Rect GetSelectionRect()
@@ -185,20 +164,6 @@ public class DesktopSelectionManager : MonoBehaviour
                  selectionRect.yMin > iconYMax);
     }
 
-    private RectTransform GetIconUnderMouse()
-    {
-        Vector2 mousePos = GetMousePositionInCanvas();
-
-        foreach (var icon in iconList)
-        {
-            if (RectTransformUtility.RectangleContainsScreenPoint(icon, Input.mousePosition, uiCamera))
-            {
-                return icon;
-            }
-        }
-        return null;
-    }
-
     private Vector2 GetMousePositionInCanvas()
     {
         Vector2 mousePos = Input.mousePosition;
@@ -223,5 +188,22 @@ public class DesktopSelectionManager : MonoBehaviour
         {
             img.color = Color.white;
         }
+    }
+
+    private bool IsMouseOnDesktopLayer()
+    {
+        return desktopLayer.CompareTag("Desktop") && RectTransformUtility.RectangleContainsScreenPoint((RectTransform)desktopLayer.transform, Input.mousePosition, uiCamera);
+    }
+
+    private bool IsMouseOnFolderObject()
+    {
+        foreach (var folder in folderObjects)
+        {
+            if (folder.activeInHierarchy && RectTransformUtility.RectangleContainsScreenPoint((RectTransform)folder.transform, Input.mousePosition, uiCamera))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 512626350}
   m_Layer: 5
   m_Name: re
-  m_TagString: Untagged
+  m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 674973715}
   m_Layer: 5
   m_Name: Drag
-  m_TagString: Untagged
+  m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -767,7 +767,7 @@ GameObject:
   - component: {fileID: 803874937}
   m_Layer: 5
   m_Name: PictureGrid
-  m_TagString: Untagged
+  m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1096,8 +1096,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1323180692}
   - {fileID: 963194228}
+  - {fileID: 1323180692}
   - {fileID: 2096683072}
   - {fileID: 1724561197}
   - {fileID: 1075379410}
@@ -1244,7 +1244,7 @@ GameObject:
   - component: {fileID: 1075379413}
   m_Layer: 5
   m_Name: folderPanel
-  m_TagString: Untagged
+  m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1353,7 +1353,7 @@ GameObject:
   - component: {fileID: 1089449246}
   m_Layer: 5
   m_Name: PictureGrid
-  m_TagString: Untagged
+  m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1565,7 +1565,7 @@ GameObject:
   - component: {fileID: 1142225539}
   m_Layer: 5
   m_Name: notePanel
-  m_TagString: Untagged
+  m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1873,9 +1873,9 @@ GameObject:
   - component: {fileID: 1323180694}
   - component: {fileID: 1323180693}
   - component: {fileID: 1323180695}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: Desktop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: 1487667266}
   m_Layer: 5
   m_Name: Drag
-  m_TagString: Untagged
+  m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2232,7 +2232,7 @@ GameObject:
   - component: {fileID: 1690237980}
   m_Layer: 5
   m_Name: re
-  m_TagString: Untagged
+  m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2665,7 +2665,7 @@ GameObject:
   - component: {fileID: 1771655647}
   m_Layer: 5
   m_Name: enLargePanel
-  m_TagString: Untagged
+  m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3129,6 +3129,10 @@ MonoBehaviour:
   iconList:
   - {fileID: 2096683072}
   - {fileID: 1724561197}
+  desktopLayer: {fileID: 1323180691}
+  folderObjects:
+  - {fileID: 1075379409}
+  - {fileID: 1142225535}
   doubleClickThreshold: 0.3
 --- !u!1 &2096683071
 GameObject:

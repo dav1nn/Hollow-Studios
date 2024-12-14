@@ -9,6 +9,9 @@ TagManager:
   - Profile3
   - Profile4
   - Profile5
+  - desktop
+  - Desktop
+  - Folder
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - desktop
   - 
   - 
   - 
