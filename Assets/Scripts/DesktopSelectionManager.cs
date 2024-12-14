@@ -15,6 +15,8 @@ public class DesktopSelectionManager : MonoBehaviour
     private Vector2 startPos;
     private Vector2 endPos;
     private HashSet<RectTransform> selectedIcons = new HashSet<RectTransform>();
+    private RectTransform lastClickedIcon = null;
+    private float lastClickTime = 0f;
 
     void Start()
     {
@@ -33,6 +35,13 @@ public class DesktopSelectionManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            RectTransform clickedIcon = GetIconUnderMouse();
+            if (clickedIcon != null)
+            {
+                HandleIconClick(clickedIcon);
+                return;
+            }
+
             if (!IsMouseOnDesktopLayer() || IsMouseOnFolderObject())
             {
                 return;
@@ -62,6 +71,26 @@ public class DesktopSelectionManager : MonoBehaviour
                     selectionBox.gameObject.SetActive(false);
                 }
             }
+        }
+    }
+
+    private void HandleIconClick(RectTransform icon)
+    {
+        float currentTime = Time.time;
+
+        if (icon == lastClickedIcon && (currentTime - lastClickTime) < doubleClickThreshold)
+        {
+            UnhighlightIcon(icon); 
+            selectedIcons.Remove(icon);
+            lastClickedIcon = null;
+        }
+        else
+        {
+            ClearAllSelections();
+            HighlightIcon(icon);
+            selectedIcons.Add(icon);
+            lastClickedIcon = icon;
+            lastClickTime = currentTime;
         }
     }
 
@@ -162,6 +191,19 @@ public class DesktopSelectionManager : MonoBehaviour
                  selectionRect.xMin > iconXMax ||
                  selectionRect.yMax < iconYMin ||
                  selectionRect.yMin > iconYMax);
+    }
+
+    private RectTransform GetIconUnderMouse()
+    {
+        Vector2 mousePos = Input.mousePosition;
+        foreach (var icon in iconList)
+        {
+            if (RectTransformUtility.RectangleContainsScreenPoint(icon, mousePos, uiCamera))
+            {
+                return icon;
+            }
+        }
+        return null;
     }
 
     private Vector2 GetMousePositionInCanvas()
