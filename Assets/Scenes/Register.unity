@@ -2518,7 +2518,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5829271117001248989, guid: e13a03cf6f23c7844848de32e4e07b18, type: 2}
   m_audioClip: {fileID: 8300000, guid: 0a8ac6887f1f73f4ca2308f9af828be3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.246
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3309,6 +3309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 8300000, guid: 2064d56989159ac489afbebb70b19a6a, type: 3}
+  audioMixerGroup: {fileID: 5829271117001248989, guid: e13a03cf6f23c7844848de32e4e07b18, type: 2}
 --- !u!4 &1450367365
 Transform:
   m_ObjectHideFlags: 0
@@ -3472,7 +3473,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5829271117001248989, guid: e13a03cf6f23c7844848de32e4e07b18, type: 2}
   m_audioClip: {fileID: 8300000, guid: 0a8ac6887f1f73f4ca2308f9af828be3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.246
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

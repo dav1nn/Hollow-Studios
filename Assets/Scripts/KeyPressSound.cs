@@ -16,7 +16,7 @@ public class KeyPressSound : MonoBehaviour
         if (inputField.isFocused)
         {
             
-            if (Input.anyKeyDown && !Input.GetKey(KeyCode.Backspace) && !Input.GetKey(KeyCode.Return))
+            if (Input.anyKeyDown && !Input.GetKey(KeyCode.Backspace))
             {
                 PlayTypingSound();
             }
@@ -48,6 +48,8 @@ public class KeyPressSound : MonoBehaviour
         }
     }
 }
+
+
 
 
 
