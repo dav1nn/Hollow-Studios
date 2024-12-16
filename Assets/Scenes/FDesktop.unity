@@ -2455,9 +2455,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1131109684}
-  - component: {fileID: 1131109687}
-  - component: {fileID: 1131109686}
-  - component: {fileID: 1131109685}
   m_Layer: 0
   m_Name: DialogueSystem
   m_TagString: Untagged
@@ -2480,54 +2477,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1131109685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131109683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd82bb409a50a646b3a760da7d117d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  option1Button: {fileID: 309345026}
-  option2Button: {fileID: 1352965089}
-  option3Button: {fileID: 577455971}
-  option1Text: {fileID: 199920224}
-  option2Text: {fileID: 87571763}
-  option3Text: {fileID: 991187693}
-  currentDialogueData: {fileID: 11400000, guid: 17fb28749e63eb841b67ca9d6f787005, type: 2}
---- !u!114 &1131109686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131109683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bad26ecae4ec5048994cc871eb849fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chatText: {fileID: 625807559}
-  dialogueOptionsPanel: {fileID: 1449481277}
-  initialMessage: Hey! Hows' it going?
-  typingSpeed: 0.05
---- !u!114 &1131109687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131109683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48ed51166ed41df429c976acc9005448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chatboxPanel: {fileID: 212038735}
 --- !u!1 &1162284603
 GameObject:
   m_ObjectHideFlags: 0
