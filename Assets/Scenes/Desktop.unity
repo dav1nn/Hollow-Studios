@@ -2865,18 +2865,54 @@ MonoBehaviour:
     - :)
     - love you
     - u okay?
-    nextNodes: 
+    nextNodes: 070000000800000009000000
   - npcDialogue: 'Just checking in '
     playerResponses:
     - u okay?
     - why
     - im doing fine mam
-    nextNodes: 
+    nextNodes: 0a0000000b0000000c000000
   - npcDialogue: why the attitude?
     playerResponses:
     - Had a long day
     - just tired
     - sorry, just tired
+    nextNodes: 
+  - npcDialogue: I just checking in :)
+    playerResponses:
+    - Thank you, cya
+    - bye
+    - Thanks mam, have a good day
+    nextNodes: 
+  - npcDialogue: Doing great thank you, its nice to hear from you again
+    playerResponses:
+    - You too mam:)
+    - Yeah sorry its been awhile
+    - gtg sorry
+    nextNodes: 
+  - npcDialogue: <3
+    playerResponses:
+    - <3
+    - love ya
+    - cya mam
+    nextNodes: 
+  - npcDialogue: I love you too
+    playerResponses:
+    - 
+    - 
+    - 
+    nextNodes: 
+  - npcDialogue: doing good my dear thank you
+    playerResponses:
+    - Thats good
+    - :3
+    - <3
+    nextNodes: 
+  - npcDialogue: doing good
+    playerResponses:
+    - Thats good
+    - :3
+    - <3
     nextNodes: 
 --- !u!4 &709573366
 Transform:
