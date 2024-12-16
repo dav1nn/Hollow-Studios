@@ -12,6 +12,8 @@ TagManager:
   - desktop
   - Desktop
   - Folder
+  - taskbar
+  - Taskbar
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Water
   - UI
   - desktop
-  - 
+  - taskbar
   - 
   - 
   - 
@@ -48,4 +50,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: taskbar
+    uniqueID: 1062713317
     locked: 0

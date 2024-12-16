@@ -422,7 +422,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 539472803}
   m_HandleRect: {fileID: 539472802}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1040,6 +1040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelRectTransform: {fileID: 1142225536}
+  taskbarLayerName: taskbar
 --- !u!114 &674973716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,7 +1235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.010986328, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0.010986328, y: 0.000030517578}
   m_SizeDelta: {x: 78.163, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733195164
@@ -1861,8 +1862,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: -1
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1062713317
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1028461674
 RectTransform:
@@ -1883,9 +1884,8 @@ RectTransform:
   - {fileID: 1075379410}
   - {fileID: 1142225536}
   - {fileID: 1771655644}
-  - {fileID: 1152147953}
-  - {fileID: 1071230843}
   - {fileID: 253318963}
+  - {fileID: 1152147953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2099,11 +2099,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1119615438}
-  m_Father: {fileID: 1028461674}
+  m_Father: {fileID: 1152147953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -553.6, y: -301.5}
+  m_AnchoredPosition: {x: -549.7461, y: 1.5231934}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1071230844
@@ -2578,7 +2578,7 @@ GameObject:
   - component: {fileID: 1152147954}
   m_Layer: 5
   m_Name: TaskBar (1)
-  m_TagString: Folder
+  m_TagString: taskbar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2596,6 +2596,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1829799272}
+  - {fileID: 1071230843}
   m_Father: {fileID: 1028461674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3268,6 +3269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelRectTransform: {fileID: 1075379410}
+  taskbarLayerName: taskbar
 --- !u!1 &1649780485
 GameObject:
   m_ObjectHideFlags: 0
@@ -3927,6 +3929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelRectTransform: {fileID: 1771655644}
+  taskbarLayerName: taskbar
 --- !u!1 &1829799271
 GameObject:
   m_ObjectHideFlags: 0
@@ -3938,9 +3941,9 @@ GameObject:
   - component: {fileID: 1829799272}
   - component: {fileID: 1829799274}
   - component: {fileID: 1829799273}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: TaskBar
-  m_TagString: Folder
+  m_TagString: taskbar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

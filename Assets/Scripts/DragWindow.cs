@@ -4,17 +4,30 @@ using UnityEngine.EventSystems;
 public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IPointerDownHandler
 {
     [SerializeField] private RectTransform panelRectTransform;
+    [SerializeField] private string taskbarLayerName = "taskbar"; 
     private Vector2 originalLocalPointerPosition;
     private Vector3 originalPanelLocalPosition;
 
+    private Canvas canvas;
+    private int originalSortingOrder;
+
+    private void Awake()
+    {
+        canvas = GetComponentInParent<Canvas>();
+        if (canvas != null)
+        {
+            originalSortingOrder = canvas.sortingOrder;
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
-        panelRectTransform.SetAsLastSibling();
+        SetAsLastSiblingExcludingTaskbar();
     }
 
     public void OnBeginDrag(PointerEventData data)
     {
-        panelRectTransform.SetAsLastSibling();
+        SetAsLastSiblingExcludingTaskbar();
         originalPanelLocalPosition = panelRectTransform.localPosition;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             panelRectTransform.parent as RectTransform,
@@ -39,5 +52,25 @@ public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IPoint
 
         Vector3 offsetToOriginal = localPointerPosition - originalLocalPointerPosition;
         panelRectTransform.localPosition = originalPanelLocalPosition + offsetToOriginal;
+    }
+
+    private void SetAsLastSiblingExcludingTaskbar()
+    {
+        Transform parentTransform = panelRectTransform.parent;
+        if (parentTransform == null)
+            return;
+
+        for (int i = parentTransform.childCount - 1; i >= 0; i--)
+        {
+            Transform child = parentTransform.GetChild(i);
+
+            if (child.CompareTag(taskbarLayerName))
+            {
+                panelRectTransform.SetSiblingIndex(i);
+                return;
+            }
+        }
+
+        panelRectTransform.SetAsLastSibling();
     }
 }
