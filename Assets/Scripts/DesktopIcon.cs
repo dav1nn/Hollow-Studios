@@ -7,6 +7,7 @@ public class DesktopIcon : MonoBehaviour, IPointerClickHandler
     private float lastClickTime = 0f;
 
     [SerializeField] private GameObject filePanel;
+    [SerializeField] private ConversationManager conversationManager;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -14,8 +15,11 @@ public class DesktopIcon : MonoBehaviour, IPointerClickHandler
         if (timeSinceLastClick <= doubleClickTime)
         {
             OpenFilePanel();
+            if (conversationManager != null)
+            {
+                conversationManager.StartConversation();
+            }
         }
-
         lastClickTime = Time.time;
     }
 
