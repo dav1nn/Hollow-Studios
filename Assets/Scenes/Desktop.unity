@@ -2914,6 +2914,18 @@ MonoBehaviour:
     - :3
     - <3
     nextNodes: 
+  - npcDialogue: am i not allowed to check up on you?
+    playerResponses:
+    - 
+    - 
+    - 
+    nextNodes: 
+  - npcDialogue: Im glad my dear its been awhile since ive spoken to you
+    playerResponses:
+    - 
+    - 
+    - 
+    nextNodes: 
 --- !u!4 &709573366
 Transform:
   m_ObjectHideFlags: 0
