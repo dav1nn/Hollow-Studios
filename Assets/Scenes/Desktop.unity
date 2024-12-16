@@ -2877,54 +2877,114 @@ MonoBehaviour:
     - Had a long day
     - just tired
     - sorry, just tired
-    nextNodes: 
-  - npcDialogue: I just checking in :)
+    nextNodes: 0d0000000e0000000f000000
+  - npcDialogue: I just was checking in :)
     playerResponses:
     - Thank you, cya
     - bye
     - Thanks mam, have a good day
-    nextNodes: 
+    nextNodes: 100000001100000012000000
   - npcDialogue: Doing great thank you, its nice to hear from you again
     playerResponses:
     - You too mam:)
     - Yeah sorry its been awhile
     - gtg sorry
-    nextNodes: 
+    nextNodes: 130000001400000015000000
   - npcDialogue: <3
     playerResponses:
     - <3
     - love ya
     - cya mam
-    nextNodes: 
+    nextNodes: 160000001700000018000000
   - npcDialogue: I love you too
-    playerResponses:
-    - 
-    - 
-    - 
+    playerResponses: []
     nextNodes: 
   - npcDialogue: doing good my dear thank you
     playerResponses:
     - Thats good
     - :3
     - <3
-    nextNodes: 
+    nextNodes: 160000001700000018000000
   - npcDialogue: doing good
     playerResponses:
     - Thats good
     - :3
     - <3
-    nextNodes: 
+    nextNodes: 190000001a0000001b000000
   - npcDialogue: am i not allowed to check up on you?
     playerResponses:
-    - 
-    - 
-    - 
-    nextNodes: 
+    - no
+    - of course you are
+    - im busy rn
+    nextNodes: 1c0000001d0000001e000000
   - npcDialogue: Im glad my dear its been awhile since ive spoken to you
     playerResponses:
-    - 
-    - 
-    - 
+    - ik im sorry
+    - been busy
+    - i know, mam
+    nextNodes: 1f0000002000000021000000
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
+    nextNodes: 
+  - npcDialogue: 
+    playerResponses: []
     nextNodes: 
 --- !u!4 &709573366
 Transform:
