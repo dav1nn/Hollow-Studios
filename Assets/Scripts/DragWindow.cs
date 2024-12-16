@@ -4,25 +4,28 @@ using UnityEngine.EventSystems;
 public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IPointerDownHandler
 {
     [SerializeField] private RectTransform panelRectTransform;
-    [SerializeField] private string taskbarLayerName = "taskbar"; 
+    [SerializeField] private string taskbarLayerName = "taskbar";
     private Vector2 originalLocalPointerPosition;
     private Vector3 originalPanelLocalPosition;
 
-    private Canvas canvas;
-    private int originalSortingOrder;
-
     private void Awake()
     {
-        canvas = GetComponentInParent<Canvas>();
-        if (canvas != null)
+        if (panelRectTransform == null)
         {
-            originalSortingOrder = canvas.sortingOrder;
+            panelRectTransform = GetComponent<RectTransform>();
         }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        SetAsLastSiblingExcludingTaskbar();
+        if (eventData.pointerEnter != null && eventData.pointerEnter.CompareTag("folder"))
+        {
+            SetAsLastSibling();
+        }
+        else
+        {
+            SetAsLastSiblingExcludingTaskbar();
+        }
     }
 
     public void OnBeginDrag(PointerEventData data)
@@ -71,6 +74,11 @@ public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IPoint
             }
         }
 
+        panelRectTransform.SetAsLastSibling();
+    }
+
+    private void SetAsLastSibling()
+    {
         panelRectTransform.SetAsLastSibling();
     }
 }
