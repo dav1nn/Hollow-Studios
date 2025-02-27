@@ -10,17 +10,28 @@ public class ConversationManager : MonoBehaviour
     public TextMeshProUGUI npcText;
     public Button[] responseButtons;
     public DialogueNode[] nodes;
+
     private int currentNodeIndex = 0;
+    private string conversationText = "";
+    private string playerUsername;
+
+    private void Start()
+    {
+        playerUsername = PlayerPrefs.GetString("PlayerUsername", "User");
+    }
 
     public void StartConversation()
     {
         currentNodeIndex = 0;
+        conversationText = "Mom: " + nodes[currentNodeIndex].npcDialogue;
+        npcText.text = conversationText;
         UpdateUI();
         chatPanel.SetActive(true);
     }
 
     public void OnPlayerResponse(int responseIndex)
     {
+        conversationText += "\n\n" + playerUsername + ": " + nodes[currentNodeIndex].playerResponses[responseIndex];
         int nextIndex = nodes[currentNodeIndex].nextNodes[responseIndex];
         if (nextIndex < 0 || nextIndex >= nodes.Length)
         {
@@ -28,12 +39,13 @@ public class ConversationManager : MonoBehaviour
             return;
         }
         currentNodeIndex = nextIndex;
+        conversationText += "\n\nMom: " + nodes[currentNodeIndex].npcDialogue;
+        npcText.text = conversationText;
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        npcText.text = nodes[currentNodeIndex].npcDialogue;
         string[] responses = nodes[currentNodeIndex].playerResponses;
         for (int i = 0; i < responseButtons.Length; i++)
         {
@@ -54,4 +66,3 @@ public class ConversationManager : MonoBehaviour
         chatPanel.SetActive(false);
     }
 }
-
