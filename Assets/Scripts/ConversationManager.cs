@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -14,6 +13,7 @@ public class ConversationManager : MonoBehaviour
     private int currentNodeIndex = 0;
     private string conversationText = "";
     private string playerUsername;
+    private Coroutine typingDotsCoroutine;
 
     private void Start()
     {
@@ -25,6 +25,7 @@ public class ConversationManager : MonoBehaviour
         currentNodeIndex = 0;
         conversationText = "Mom: " + nodes[currentNodeIndex].npcDialogue;
         npcText.text = conversationText;
+
         UpdateUI();
         chatPanel.SetActive(true);
     }
@@ -32,21 +33,60 @@ public class ConversationManager : MonoBehaviour
     public void OnPlayerResponse(int responseIndex)
     {
         conversationText += "\n\n" + playerUsername + ": " + nodes[currentNodeIndex].playerResponses[responseIndex];
+
         int nextIndex = nodes[currentNodeIndex].nextNodes[responseIndex];
         if (nextIndex < 0 || nextIndex >= nodes.Length)
         {
             EndConversation();
             return;
         }
+
         currentNodeIndex = nextIndex;
+
+        npcText.text = conversationText;
+
+        HideResponseButtons();
+
+        StartCoroutine(ShowMomTypingRoutine());
+    }
+
+    private IEnumerator ShowMomTypingRoutine()
+    {
+        float waitBeforeTyping = Random.Range(2f, 5f);
+        yield return new WaitForSeconds(waitBeforeTyping);
+
+        string baseText = conversationText + "\n\nMom is typing";
+        typingDotsCoroutine = StartCoroutine(TypeDotsCoroutine(baseText));
+
+        float typingDuration = Random.Range(4f, 7f);
+        yield return new WaitForSeconds(typingDuration);
+
+        if (typingDotsCoroutine != null)
+        {
+            StopCoroutine(typingDotsCoroutine);
+        }
+
         conversationText += "\n\nMom: " + nodes[currentNodeIndex].npcDialogue;
         npcText.text = conversationText;
+
         UpdateUI();
+    }
+
+    private IEnumerator TypeDotsCoroutine(string baseText)
+    {
+        int dotCount = 0;
+        while (true)
+        {
+            dotCount = (dotCount % 3) + 1;
+            npcText.text = baseText + new string('.', dotCount);
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     private void UpdateUI()
     {
         string[] responses = nodes[currentNodeIndex].playerResponses;
+
         for (int i = 0; i < responseButtons.Length; i++)
         {
             if (i < responses.Length)
@@ -58,6 +98,14 @@ public class ConversationManager : MonoBehaviour
             {
                 responseButtons[i].gameObject.SetActive(false);
             }
+        }
+    }
+
+    private void HideResponseButtons()
+    {
+        for (int i = 0; i < responseButtons.Length; i++)
+        {
+            responseButtons[i].gameObject.SetActive(false);
         }
     }
 
