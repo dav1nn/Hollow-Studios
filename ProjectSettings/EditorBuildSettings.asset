@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Desktop.unity
     guid: c9eb6240823494a45a68f071e770b627
+  - enabled: 0
+    path: Assets/Scenes/AfterDesktop.unity
+    guid: 2808df588c9a3e448bf1edb0775df4ce
+  - enabled: 1
+    path: Assets/Scenes/Desktop 2.unity
+    guid: 84f4ef34f515ca14f8fa17be2958e1b0
   m_configObjects: {}
