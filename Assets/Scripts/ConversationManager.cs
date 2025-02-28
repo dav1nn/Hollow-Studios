@@ -10,9 +10,13 @@ public class ConversationManager : MonoBehaviour
     public Button[] responseButtons;
     public DialogueNode[] nodes;
 
+    private bool conversationStarted = false;
+    private bool isTyping = false;
+
     private int currentNodeIndex = 0;
     private string conversationText = "";
     private string playerUsername;
+
     private Coroutine typingDotsCoroutine;
 
     private void Start()
@@ -22,17 +26,32 @@ public class ConversationManager : MonoBehaviour
 
     public void StartConversation()
     {
-        currentNodeIndex = 0;
-        conversationText = "Mom: " + nodes[currentNodeIndex].npcDialogue;
-        npcText.text = conversationText;
+        if (!conversationStarted)
+        {
+            conversationStarted = true;
+            currentNodeIndex = 0;
+            conversationText = "Mom: " + nodes[currentNodeIndex].npcDialogue;
+            npcText.text = conversationText;
+            UpdateUI();
+        }
 
-        UpdateUI();
         chatPanel.SetActive(true);
+
+        if (isTyping)
+        {
+            HideResponseButtons();
+        }
+        else
+        {
+            npcText.text = conversationText;
+            UpdateUI();
+        }
     }
 
     public void OnPlayerResponse(int responseIndex)
     {
         conversationText += "\n\n" + playerUsername + ": " + nodes[currentNodeIndex].playerResponses[responseIndex];
+        npcText.text = conversationText;
 
         int nextIndex = nodes[currentNodeIndex].nextNodes[responseIndex];
         if (nextIndex < 0 || nextIndex >= nodes.Length)
@@ -43,7 +62,7 @@ public class ConversationManager : MonoBehaviour
 
         currentNodeIndex = nextIndex;
 
-        npcText.text = conversationText;
+        isTyping = true;
 
         HideResponseButtons();
 
@@ -69,12 +88,15 @@ public class ConversationManager : MonoBehaviour
         conversationText += "\n\nMom: " + nodes[currentNodeIndex].npcDialogue;
         npcText.text = conversationText;
 
+        isTyping = false;
+
         UpdateUI();
     }
 
     private IEnumerator TypeDotsCoroutine(string baseText)
     {
         int dotCount = 0;
+
         while (true)
         {
             dotCount = (dotCount % 3) + 1;

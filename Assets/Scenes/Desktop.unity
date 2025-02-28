@@ -2923,7 +2923,7 @@ MonoBehaviour:
     - been busy
     - i know, mam
     nextNodes: 1f0000002000000021000000
-  - npcDialogue: 
+  - npcDialogue: Goodbye.
     playerResponses: []
     nextNodes: 
   - npcDialogue: 
