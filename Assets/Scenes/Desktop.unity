@@ -1971,7 +1971,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 539472803}
   m_HandleRect: {fileID: 539472802}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13418,6 +13418,9 @@ MonoBehaviour:
   consoleOutputText: {fileID: 342743470}
   WindowsToReset:
   - {fileID: 1142225536}
+  - {fileID: 1075379410}
+  - {fileID: 1364886204}
+  - {fileID: 1828678024}
 --- !u!114 &1758872264
 MonoBehaviour:
   m_ObjectHideFlags: 0
