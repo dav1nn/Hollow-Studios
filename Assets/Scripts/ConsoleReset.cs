@@ -35,25 +35,22 @@ public class ConsoleReset : MonoBehaviour
 
     public void OnInputSubmit()
     {
-        string userInput = consoleInputField.text;
+        string userInput = consoleInputField.text.Trim();
 
-        if (userInput.Equals("reset", System.StringComparison.OrdinalIgnoreCase))
+        if (!string.IsNullOrEmpty(userInput))
         {
-            ResetWindows();
-            AppendOutput("All Programs Position Have Been Reset");
-        }
-        else
-        {
-            AppendOutput("Unknown command: " + userInput);
+            if (userInput.Equals("reset", System.StringComparison.OrdinalIgnoreCase))
+            {
+                ResetWindows();
+                consoleOutputText.text = "All Programs Position Have Been Reset";
+            }
+            else
+            {
+                consoleOutputText.text = "Unknown command: " + userInput;
+            }
         }
 
         consoleInputField.text = string.Empty;
-    }
-
-    void AppendOutput(string text)
-    {
-        if (consoleOutputText == null) return;
-        consoleOutputText.text = text;
     }
 
     void ResetWindows()
