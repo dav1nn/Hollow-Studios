@@ -2236,7 +2236,6 @@ GameObject:
   - component: {fileID: 342743471}
   - component: {fileID: 342743470}
   - component: {fileID: 342743469}
-  - component: {fileID: 342743468}
   m_Layer: 5
   m_Name: ConsoleResponse
   m_TagString: Untagged
@@ -2263,24 +2262,6 @@ RectTransform:
   m_AnchoredPosition: {x: -28.4, y: -39.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &342743468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342743466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dbdc966e1b5a1e48a16ccca9622227e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dateText: {fileID: 342743470}
-  calendarPopup: {fileID: 0}
-  extraPanel: {fileID: 0}
-  daysParent: {fileID: 0}
-  highlightColor: {r: 0, g: 0, b: 0, a: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &342743469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2325,7 +2306,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 342743468}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CalendarUI, Assembly-CSharp
         m_MethodName: OnDateClicked
         m_Mode: 1
@@ -7112,7 +7093,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028461670}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3184e3747ff0054bac72be70aadbc4f, type: 3}
   m_Name: 
@@ -10791,7 +10772,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323180691}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b27b762611585da4c91f9fb7e3839e59, type: 3}
   m_Name: 
@@ -13211,7 +13192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: -4.999878}
+  m_AnchoredPosition: {x: -5, y: -5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1747606799
@@ -13350,7 +13331,6 @@ GameObject:
   - component: {fileID: 1758872258}
   - component: {fileID: 1758872261}
   - component: {fileID: 1758872260}
-  - component: {fileID: 1758872259}
   - component: {fileID: 1758872263}
   m_Layer: 5
   m_Name: consolePanel
@@ -13383,26 +13363,6 @@ RectTransform:
   m_AnchoredPosition: {x: -93.8, y: 103.3}
   m_SizeDelta: {x: 80.9058, y: 133.374}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1758872259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758872257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4918fe01835eca4a8cef03fff7e711b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  picturePrefab: {fileID: 0}
-  pictureGrid: {fileID: 0}
-  pictureSprites: []
-  pictureDescriptions: []
-  enlargePanel: {fileID: 0}
-  enlargeImage: {fileID: 0}
-  enlargeText: {fileID: 0}
-  folderPanel: {fileID: 1758872257}
 --- !u!114 &1758872260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13674,7 +13634,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1758872259}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PictureFolder, Assembly-CSharp
         m_MethodName: CloseFolder
         m_Mode: 1
@@ -16058,7 +16018,6 @@ GameObject:
   - component: {fileID: 2070612392}
   - component: {fileID: 2070612391}
   - component: {fileID: 2070612393}
-  - component: {fileID: 2070612395}
   - component: {fileID: 2070612396}
   m_Layer: 0
   m_Name: DESKTOPMANAGER
@@ -16130,28 +16089,6 @@ MonoBehaviour:
   - {fileID: 1828678023}
   - {fileID: 1758872257}
   doubleClickThreshold: 0.3
---- !u!114 &2070612395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070612390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aac68e8d5f98904ab20180e7fe66998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsToReset:
-  - targetObject: {fileID: 1075379409}
-    originalPosition: {x: 0, y: 0, z: 0}
-  - targetObject: {fileID: 1828678023}
-    originalPosition: {x: 0, y: 0, z: 0}
-  - targetObject: {fileID: 1142225535}
-    originalPosition: {x: 0, y: 0, z: 0}
-  - targetObject: {fileID: 1771655643}
-    originalPosition: {x: 0, y: 0, z: 0}
-  inputField: {fileID: 0}
 --- !u!114 &2070612396
 MonoBehaviour:
   m_ObjectHideFlags: 0
