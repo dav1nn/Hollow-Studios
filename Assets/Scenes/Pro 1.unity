@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 403502556}
-  fullText: You must search for clues hidden in this computer
+  fullText: 'You must search for clues hidden in this computer '
   typeSpeed: 0.1
 --- !u!114 &46967983
 MonoBehaviour:
