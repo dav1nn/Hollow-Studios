@@ -30,7 +30,7 @@ public class ConversationManager : MonoBehaviour
         {
             conversationStarted = true;
             currentNodeIndex = 0;
-            conversationText = "Mom: " + nodes[currentNodeIndex].npcDialogue;
+            conversationText = "?: " + nodes[currentNodeIndex].npcDialogue;
             npcText.text = conversationText;
             UpdateUI();
         }
@@ -74,7 +74,7 @@ public class ConversationManager : MonoBehaviour
         float waitBeforeTyping = Random.Range(2f, 5f);
         yield return new WaitForSeconds(waitBeforeTyping);
 
-        string baseText = conversationText + "\n\nMom is typing";
+        string baseText = conversationText + "\n\n? is typing";
         typingDotsCoroutine = StartCoroutine(TypeDotsCoroutine(baseText));
 
         float typingDuration = Random.Range(4f, 7f);
@@ -85,7 +85,7 @@ public class ConversationManager : MonoBehaviour
             StopCoroutine(typingDotsCoroutine);
         }
 
-        conversationText += "\n\nMom: " + nodes[currentNodeIndex].npcDialogue;
+        conversationText += "\n\n?: " + nodes[currentNodeIndex].npcDialogue;
         npcText.text = conversationText;
 
         isTyping = false;

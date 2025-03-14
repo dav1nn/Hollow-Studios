@@ -8048,7 +8048,7 @@ MonoBehaviour:
   - {fileID: 524531522}
   - {fileID: 1310779943}
   nodes:
-  - npcDialogue: Hello how are you doing?
+  - npcDialogue: Why are you on this computer?
     playerResponses:
     - good
     - Great thank you
@@ -13172,11 +13172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clockText: {fileID: 1075755845}
-  dayPanel: {fileID: 0}
-  dayText: {fileID: 0}
-  nextSceneName: Desktop 2
-  fadeDuration: 1
-  displayDuration: 2
 --- !u!114 &1075755845
 MonoBehaviour:
   m_ObjectHideFlags: 0

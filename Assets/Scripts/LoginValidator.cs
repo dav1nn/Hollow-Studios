@@ -37,7 +37,7 @@ public class LoginValidator : MonoBehaviour
         if (enteredPassword == savedPassword)
         {
             // Password matches: Proceed to Desktop
-            SceneManager.LoadScene("Desktop");
+            SceneManager.LoadScene("Pro 1");
         }
         else
         {
