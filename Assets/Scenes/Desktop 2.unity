@@ -14321,6 +14321,7 @@ GameObject:
   - component: {fileID: 1142225538}
   - component: {fileID: 1142225537}
   - component: {fileID: 1142225539}
+  - component: {fileID: 1142225540}
   m_Layer: 5
   m_Name: notePanel
   m_TagString: Folder
@@ -14409,6 +14410,19 @@ MonoBehaviour:
   enlargeImage: {fileID: 0}
   enlargeText: {fileID: 0}
   folderPanel: {fileID: 1142225535}
+--- !u!114 &1142225540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142225535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5072f403db6f5ab4e8c7310e83455e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteInputField: {fileID: 733195164}
 --- !u!1 &1153435458
 GameObject:
   m_ObjectHideFlags: 0

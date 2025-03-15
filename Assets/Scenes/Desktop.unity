@@ -2842,7 +2842,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 539472803}
   m_HandleRect: {fileID: 539472802}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5519,7 +5519,7 @@ RectTransform:
   m_Father: {fileID: 964611711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7847,7 +7847,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.010986328, y: 0.000030517578}
-  m_SizeDelta: {x: 78.163, y: 122}
+  m_SizeDelta: {x: 78.163, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733195164
 MonoBehaviour:
@@ -12556,13 +12556,14 @@ GameObject:
   - component: {fileID: 1142225538}
   - component: {fileID: 1142225537}
   - component: {fileID: 1142225539}
+  - component: {fileID: 1142225540}
   m_Layer: 5
   m_Name: notePanel
   m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1142225536
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12644,6 +12645,19 @@ MonoBehaviour:
   enlargeImage: {fileID: 0}
   enlargeText: {fileID: 0}
   folderPanel: {fileID: 1142225535}
+--- !u!114 &1142225540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142225535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5072f403db6f5ab4e8c7310e83455e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteInputField: {fileID: 733195164}
 --- !u!1 &1152147952
 GameObject:
   m_ObjectHideFlags: 0
