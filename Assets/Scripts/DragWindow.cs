@@ -23,12 +23,18 @@ public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IPoint
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!CompareTag(taskbarLayerName)) SetAsLastSiblingExcludingTaskbar();
+        if (!CompareTag(taskbarLayerName))
+        {
+            SetAsLastSiblingExcludingTaskbar();
+        }
     }
 
     public void OnBeginDrag(PointerEventData data)
     {
-        if (!CompareTag(taskbarLayerName)) SetAsLastSiblingExcludingTaskbar();
+        if (!CompareTag(taskbarLayerName))
+        {
+            SetAsLastSiblingExcludingTaskbar();
+        }
         originalPanelLocalPosition = panelRectTransform.localPosition;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             panelRectTransform.parent as RectTransform,
@@ -57,19 +63,32 @@ public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IPoint
 
     private bool IsOverlappingZone()
     {
-        Bounds panelBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(
-            panelRectTransform.parent,
-            panelRectTransform
-        );
-        Rect rectA = new Rect(panelBounds.min, panelBounds.size);
+        Rect panelRect = GetScreenRect(panelRectTransform);
         foreach (var z in zoneRects)
         {
             if (!z) continue;
-            Bounds zoneBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(z.parent, z);
-            Rect rectB = new Rect(zoneBounds.min, zoneBounds.size);
-            if (rectA.Overlaps(rectB)) return true;
+            Rect zoneRect = GetScreenRect(z);
+            if (panelRect.Overlaps(zoneRect)) return true;
         }
         return false;
+    }
+
+    private Rect GetScreenRect(RectTransform rt)
+    {
+        Vector3[] corners = new Vector3[4];
+        rt.GetWorldCorners(corners);
+        float xMin = float.MaxValue;
+        float yMin = float.MaxValue;
+        float xMax = float.MinValue;
+        float yMax = float.MinValue;
+        for (int i = 0; i < 4; i++)
+        {
+            if (corners[i].x < xMin) xMin = corners[i].x;
+            if (corners[i].y < yMin) yMin = corners[i].y;
+            if (corners[i].x > xMax) xMax = corners[i].x;
+            if (corners[i].y > yMax) yMax = corners[i].y;
+        }
+        return new Rect(xMin, yMin, xMax - xMin, yMax - yMin);
     }
 
     private void SetAsLastSiblingExcludingTaskbar()
@@ -82,7 +101,10 @@ public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IPoint
             Transform child = parentTransform.GetChild(i);
             if (child.CompareTag(taskbarLayerName))
             {
-                if (panelRectTransform.GetSiblingIndex() > i) panelRectTransform.SetSiblingIndex(i);
+                if (panelRectTransform.GetSiblingIndex() > i)
+                {
+                    panelRectTransform.SetSiblingIndex(i);
+                }
                 return;
             }
         }
