@@ -3,6 +3,25 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
+public class CoroutineRunner : MonoBehaviour
+{
+    static CoroutineRunner instance;
+    public static CoroutineRunner Instance
+    {
+        get
+        {
+            if (!instance)
+            {
+                GameObject o = new GameObject("CoroutineRunner");
+                DontDestroyOnLoad(o);
+                instance = o.AddComponent<CoroutineRunner>();
+            }
+            return instance;
+        }
+    }
+    public Coroutine Run(IEnumerator routine) { return StartCoroutine(routine); }
+}
+
 public class PictureFolder : MonoBehaviour
 {
     [SerializeField] private GameObject picturePrefab;
@@ -54,7 +73,7 @@ public class PictureFolder : MonoBehaviour
             enlargeText.text = description;
             enlargePanel.transform.localScale = Vector3.zero;
             enlargePanel.SetActive(true);
-            StartCoroutine(AnimatePanelOpen(enlargePanel, 0.2f, enlargePanelOriginalScale));
+            CoroutineRunner.Instance.Run(AnimatePanelOpen(enlargePanel, 0.2f, enlargePanelOriginalScale));
         }
     }
 
@@ -76,7 +95,7 @@ public class PictureFolder : MonoBehaviour
     {
         if (enlargePanel != null)
         {
-            StartCoroutine(AnimatePanelClose(enlargePanel, 0.2f));
+            CoroutineRunner.Instance.Run(AnimatePanelClose(enlargePanel, 0.2f));
         }
     }
 
@@ -98,7 +117,7 @@ public class PictureFolder : MonoBehaviour
 
     public void CloseFolder()
     {
-        if (folderPanel != null) StartCoroutine(AnimateFolderClose(folderPanel, 0.2f));
+        if (folderPanel != null) CoroutineRunner.Instance.Run(AnimateFolderClose(folderPanel, 0.2f));
     }
 
     private IEnumerator AnimateFolderClose(GameObject panel, float duration)
@@ -118,5 +137,4 @@ public class PictureFolder : MonoBehaviour
         panel.transform.localScale = folderPanelOriginalScale;
     }
 }
-
 
