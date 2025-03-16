@@ -2060,7 +2060,8 @@ MonoBehaviour:
   yearInput: {fileID: 1780635285}
   accessDeniedText: {fileID: 1582134089}
   currentGameObject: {fileID: 178404454}
-  nextGameObject: {fileID: 1743192407}
+  nextGameObject: {fileID: 0}
+  nextButton: {fileID: 1743192409}
 --- !u!1 &203896829
 GameObject:
   m_ObjectHideFlags: 0
@@ -3754,7 +3755,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NEXT
+  m_text: '?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
   m_sharedMaterial: {fileID: 5432662073017269102, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
@@ -20666,7 +20667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ACCESS DENIED
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
   m_sharedMaterial: {fileID: 5432662073017269102, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
