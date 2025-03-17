@@ -4,18 +4,28 @@ using System.Collections.Generic;
 
 public class FolderActivate : MonoBehaviour
 {
-    [Header("Object that fades in")]
     public GameObject objectToFadeIn;
-
-    [Header("Objects that randomly deactivate")]
+    public GameObject permanentDeactivator;
     public List<GameObject> objectsToDeactivate;
-
-    [Tooltip("Time to fade")]
     public float fadeDuration = 1f;
 
     private void Start()
     {
         StartCoroutine(HandleTimedEvents());
+    }
+
+    private void Update()
+    {
+        if (permanentDeactivator != null && permanentDeactivator.activeSelf)
+        {
+            foreach (GameObject go in objectsToDeactivate)
+            {
+                if (go != null)
+                {
+                    go.SetActive(false);
+                }
+            }
+        }
     }
 
     private IEnumerator HandleTimedEvents()
@@ -51,16 +61,12 @@ public class FolderActivate : MonoBehaviour
             yield return new WaitForSeconds(remaining);
 
         if (objectToFadeIn == null)
-        {
             yield break;
-        }
 
         objectToFadeIn.SetActive(true);
         CanvasGroup cg = objectToFadeIn.GetComponent<CanvasGroup>();
         if (cg == null)
-        {
             cg = objectToFadeIn.AddComponent<CanvasGroup>();
-        }
 
         cg.alpha = 0f;
         float elapsed = 0f;
