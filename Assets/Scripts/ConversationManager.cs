@@ -9,14 +9,11 @@ public class ConversationManager : MonoBehaviour
     public TextMeshProUGUI npcText;
     public Button[] responseButtons;
     public DialogueNode[] nodes;
-
     private bool conversationStarted = false;
     private bool isTyping = false;
-
     private int currentNodeIndex = 0;
     private string conversationText = "";
     private string playerUsername;
-
     private Coroutine typingDotsCoroutine;
 
     private void Start()
@@ -27,18 +24,15 @@ public class ConversationManager : MonoBehaviour
     public void StartConversation()
     {
         Debug.Log("Conversation started.");
-        
         if (!conversationStarted)
         {
             conversationStarted = true;
             currentNodeIndex = 0;
-            conversationText = "?: " + nodes[currentNodeIndex].npcDialogue;
+            conversationText = "<color=#8B0000>Void:</color> " + nodes[currentNodeIndex].npcDialogue;
             npcText.text = conversationText;
             UpdateUI();
         }
-
         chatPanel.SetActive(true);
-
         if (isTyping)
         {
             HideResponseButtons();
@@ -54,20 +48,15 @@ public class ConversationManager : MonoBehaviour
     {
         conversationText += "\n\n" + playerUsername + ": " + nodes[currentNodeIndex].playerResponses[responseIndex];
         npcText.text = conversationText;
-
         int nextIndex = nodes[currentNodeIndex].nextNodes[responseIndex];
         if (nextIndex < 0 || nextIndex >= nodes.Length)
         {
             EndConversation();
             return;
         }
-
         currentNodeIndex = nextIndex;
-
         isTyping = true;
-
         HideResponseButtons();
-
         StartCoroutine(ShowMomTypingRoutine());
     }
 
@@ -75,30 +64,23 @@ public class ConversationManager : MonoBehaviour
     {
         float waitBeforeTyping = Random.Range(2f, 5f);
         yield return new WaitForSeconds(waitBeforeTyping);
-
-        string baseText = conversationText + "\n\n? is typing";
+        string baseText = conversationText + "\n\n<color=#8B0000>Void: is typing</color>";
         typingDotsCoroutine = StartCoroutine(TypeDotsCoroutine(baseText));
-
         float typingDuration = Random.Range(4f, 7f);
         yield return new WaitForSeconds(typingDuration);
-
         if (typingDotsCoroutine != null)
         {
             StopCoroutine(typingDotsCoroutine);
         }
-
-        conversationText += "\n\n?: " + nodes[currentNodeIndex].npcDialogue;
+        conversationText += "\n\n<color=#8B0000>Void:</color> " + nodes[currentNodeIndex].npcDialogue;
         npcText.text = conversationText;
-
         isTyping = false;
-
         UpdateUI();
     }
 
     private IEnumerator TypeDotsCoroutine(string baseText)
     {
         int dotCount = 0;
-
         while (true)
         {
             dotCount = (dotCount % 3) + 1;
@@ -110,7 +92,6 @@ public class ConversationManager : MonoBehaviour
     private void UpdateUI()
     {
         string[] responses = nodes[currentNodeIndex].playerResponses;
-
         for (int i = 0; i < responseButtons.Length; i++)
         {
             if (i < responses.Length && !string.IsNullOrEmpty(responses[i]))
@@ -138,4 +119,5 @@ public class ConversationManager : MonoBehaviour
         chatPanel.SetActive(false);
     }
 }
+
 
