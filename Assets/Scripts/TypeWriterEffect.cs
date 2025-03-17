@@ -5,42 +5,62 @@ using UnityEngine.SceneManagement;
 
 public class TypewriterEffect : MonoBehaviour
 {
-    public TextMeshProUGUI textComponent;
-    public string fullText;
+    [System.Serializable]
+    public class Segment
+    {
+        public TextMeshProUGUI textComponent;
+        [TextArea(3, 10)]
+        public string fullText;
+    }
+
+    public Segment[] segments;
     public float typeSpeed = 0.05f;
+    public float postSegmentDelay = 1f;
 
     void Start()
     {
-        textComponent.text = "";
-        StartCoroutine(ShowText());
+        StartCoroutine(ShowSegments());
     }
 
-    IEnumerator ShowText()
+    IEnumerator ShowSegments()
     {
-        int i = 0;
-        while (i < fullText.Length)
+        for (int s = 0; s < segments.Length; s++)
         {
-            
-            if (fullText[i] == '<')
+            segments[s].textComponent.text = "";
+            int i = 0;
+            while (i < segments[s].fullText.Length)
             {
-                int closingIndex = fullText.IndexOf('>', i);
-                if (closingIndex != -1)
+                if (segments[s].fullText[i] == '<')
                 {
-                    
-                    textComponent.text += fullText.Substring(i, closingIndex - i + 1);
-                    i = closingIndex + 1;
-                    continue;
+                    int closingIndex = segments[s].fullText.IndexOf('>', i);
+                    if (closingIndex != -1)
+                    {
+                        segments[s].textComponent.text += segments[s].fullText.Substring(i, closingIndex - i + 1);
+                        i = closingIndex + 1;
+                        continue;
+                    }
                 }
+                segments[s].textComponent.text += segments[s].fullText[i];
+                i++;
+                yield return new WaitForSeconds(typeSpeed);
             }
-            
-            textComponent.text += fullText[i];
-            i++;
-            yield return new WaitForSeconds(typeSpeed);
+            yield return new WaitForSeconds(postSegmentDelay);
         }
-        yield return new WaitForSeconds(3f);
+        
+        Debug.Log("Final text complete. Press Space to continue.");
+        while (!Input.GetKeyDown(KeyCode.Space))
+        {
+            yield return null;
+        }
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
+
+
+
+
+
 
 
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 [System.Serializable]
@@ -9,18 +10,27 @@ public class Dialogue {
     public string[] answers;
 }
 
-public class DialogueManager : MonoBehaviour
-{
+public class DialogueManager : MonoBehaviour {
     public TMP_Text dialogueText;
     public Button[] answerButtons;
     public Dialogue[] dialogues;
     public float typeSpeed = 0.05f;
-
+    public Image shutdownEffectImage;
+    public float fadeDuration = 2f;
     private int dialogueIndex = 0;
     private Coroutine typingCoroutine;
 
     void Start() {
-        DisplayDialogue(dialogues[dialogueIndex]);
+        if (dialogues.Length > 0) {
+            DisplayDialogue(dialogues[dialogueIndex]);
+        } else {
+            Debug.LogError("No dialogues assigned.");
+        }
+        if (shutdownEffectImage != null) {
+            Color c = shutdownEffectImage.color;
+            c.a = 0f;
+            shutdownEffectImage.color = c;
+        }
     }
 
     public void OnAnswerClicked() {
@@ -35,7 +45,11 @@ public class DialogueManager : MonoBehaviour
     void DisplayDialogue(Dialogue dialogue) {
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
-        typingCoroutine = StartCoroutine(TypeText(dialogue.question));
+        if (AllAnswersEmpty(dialogue.answers)) {
+            typingCoroutine = StartCoroutine(TypeTextAndShutdown(dialogue.question));
+        } else {
+            typingCoroutine = StartCoroutine(TypeText(dialogue.question));
+        }
         UpdateButtons(dialogue.answers);
     }
 
@@ -47,9 +61,21 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    IEnumerator TypeTextAndShutdown(string message) {
+        dialogueText.text = "";
+        foreach (char letter in message.ToCharArray()) {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typeSpeed);
+        }
+        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(ShutdownEffect());
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Pro 2");
+    }
+
     void UpdateButtons(string[] answers) {
         for (int i = 0; i < answerButtons.Length; i++) {
-            if (i < answers.Length && !string.IsNullOrEmpty(answers[i])) {
+            if (answers != null && i < answers.Length && !string.IsNullOrEmpty(answers[i])) {
                 TMP_Text btnText = answerButtons[i].GetComponentInChildren<TMP_Text>();
                 btnText.text = answers[i];
                 answerButtons[i].gameObject.SetActive(true);
@@ -58,7 +84,43 @@ public class DialogueManager : MonoBehaviour
             }
         }
     }
+
+    bool AllAnswersEmpty(string[] answers) {
+        if (answers == null || answers.Length == 0)
+            return true;
+        foreach (var ans in answers) {
+            if (!string.IsNullOrEmpty(ans))
+                return false;
+        }
+        return true;
+    }
+
+    IEnumerator ShutdownEffect() {
+        if (shutdownEffectImage == null) {
+            Debug.LogWarning("Shutdown effect image not assigned.");
+            yield break;
+        }
+        shutdownEffectImage.gameObject.SetActive(true);
+        float timer = 0f;
+        Color c = shutdownEffectImage.color;
+        c.a = 0f;
+        shutdownEffectImage.color = c;
+        while (timer < fadeDuration) {
+            timer += Time.deltaTime;
+            float t = timer / fadeDuration;
+            c.a = Mathf.Lerp(0f, 1f, t);
+            shutdownEffectImage.color = c;
+            yield return null;
+        }
+        c.a = 1f;
+        shutdownEffectImage.color = c;
+    }
 }
+
+
+
+
+
 
 
 
