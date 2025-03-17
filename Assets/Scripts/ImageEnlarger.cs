@@ -14,11 +14,7 @@ public class ImageEnlarger : MonoBehaviour
 
     private void Awake()
     {
-        if (enlargePanel != null)
-        {
-            originalScale = enlargePanel.transform.localScale;
-            enlargePanel.SetActive(false);
-        }
+        if (enlargePanel != null) originalScale = enlargePanel.transform.localScale;
     }
 
     public void EnlargeImage(int index)

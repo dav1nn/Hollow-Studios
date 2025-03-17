@@ -37,11 +37,7 @@ public class PictureFolder : MonoBehaviour
 
     private void Awake()
     {
-        if (enlargePanel != null)
-        {
-            enlargePanelOriginalScale = enlargePanel.transform.localScale;
-            enlargePanel.SetActive(false);
-        }
+        if (enlargePanel != null) enlargePanelOriginalScale = enlargePanel.transform.localScale;
         if (folderPanel != null) folderPanelOriginalScale = folderPanel.transform.localScale;
     }
 
