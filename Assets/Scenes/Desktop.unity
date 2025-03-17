@@ -2194,7 +2194,7 @@ MonoBehaviour:
   yearInput: {fileID: 1780635285}
   accessDeniedText: {fileID: 1582134089}
   currentGameObject: {fileID: 178404454}
-  nextGameObject: {fileID: 0}
+  nextGameObject: {fileID: 1498974442}
   nextButton: {fileID: 1743192409}
 --- !u!1 &203896829
 GameObject:
@@ -21910,7 +21910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1498974443
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23925,7 +23925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.5, y: 35.8}
+  m_AnchoredPosition: {x: 1.5, y: 41.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1681559198
@@ -23948,7 +23948,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PASSWORD REQUIRED
+  m_text: "Did you find the pictures? \nThe messages"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
   m_sharedMaterial: {fileID: 5432662073017269102, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
@@ -23975,8 +23975,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.6
-  m_fontSizeBase: 21.6
+  m_fontSize: 20.15
+  m_fontSizeBase: 20.15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -24011,7 +24011,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -43.27645, y: 0, z: -33.941616, w: 0}
+  m_margin: {x: -43.27645, y: 0, z: -33.941616, w: -66.44446}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
