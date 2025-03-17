@@ -10,7 +10,6 @@ public class ImageEnlarger : MonoBehaviour
     public TMP_Text descriptionText;
     public Image[] images;
     public string[] descriptions;
-
     private Vector3 originalScale;
 
     private void Awake()
@@ -18,28 +17,23 @@ public class ImageEnlarger : MonoBehaviour
         if (enlargePanel != null)
         {
             originalScale = enlargePanel.transform.localScale;
-            enlargePanel.transform.localScale = Vector3.zero; 
+            enlargePanel.SetActive(false);
         }
     }
 
     public void EnlargeImage(int index)
     {
         if (index < 0 || index >= images.Length || index >= descriptions.Length) return;
-
         enlargePanelImage.sprite = images[index].sprite;
         descriptionText.text = descriptions[index];
-
-        enlargePanel.transform.localScale = Vector3.zero;
         enlargePanel.SetActive(true);
+        enlargePanel.transform.localScale = Vector3.zero;
         StartCoroutine(AnimatePanelOpen(enlargePanel, 0.2f, originalScale));
     }
 
     public void CloseEnlargePanel()
     {
-        if (enlargePanel != null)
-        {
-            StartCoroutine(AnimatePanelClose(enlargePanel, 0.2f));
-        }
+        if (enlargePanel != null) StartCoroutine(AnimatePanelClose(enlargePanel, 0.2f));
     }
 
     private IEnumerator AnimatePanelOpen(GameObject panel, float duration, Vector3 targetScale)

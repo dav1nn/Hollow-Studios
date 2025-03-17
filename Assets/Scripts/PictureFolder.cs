@@ -32,13 +32,16 @@ public class PictureFolder : MonoBehaviour
     [SerializeField] private Image enlargeImage;
     [SerializeField] private TextMeshProUGUI enlargeText;
     [SerializeField] private GameObject folderPanel;
-
     private Vector3 enlargePanelOriginalScale;
     private Vector3 folderPanelOriginalScale;
 
     private void Awake()
     {
-        if (enlargePanel != null) enlargePanelOriginalScale = enlargePanel.transform.localScale;
+        if (enlargePanel != null)
+        {
+            enlargePanelOriginalScale = enlargePanel.transform.localScale;
+            enlargePanel.SetActive(false);
+        }
         if (folderPanel != null) folderPanelOriginalScale = folderPanel.transform.localScale;
     }
 
@@ -52,27 +55,27 @@ public class PictureFolder : MonoBehaviour
         foreach (Transform child in pictureGrid) Destroy(child.gameObject);
         for (int i = 0; i < pictureSprites.Length; i++)
         {
-            Sprite sprite = pictureSprites[i];
-            string description = (i < pictureDescriptions.Length) ? pictureDescriptions[i] : "No description available";
-            GameObject newPicture = Instantiate(picturePrefab, pictureGrid);
-            Image imageComponent = newPicture.GetComponent<Image>();
-            if (imageComponent != null)
+            Sprite s = pictureSprites[i];
+            string d = i < pictureDescriptions.Length ? pictureDescriptions[i] : "No description available";
+            GameObject n = Instantiate(picturePrefab, pictureGrid);
+            Image img = n.GetComponent<Image>();
+            if (img != null)
             {
-                imageComponent.sprite = sprite;
-                Button button = newPicture.GetComponent<Button>();
-                if (button != null) button.onClick.AddListener(() => EnlargeImage(sprite, description));
+                img.sprite = s;
+                Button b = n.GetComponent<Button>();
+                if (b != null) b.onClick.AddListener(() => EnlargeImage(s, d));
             }
         }
     }
 
-    private void EnlargeImage(Sprite sprite, string description)
+    private void EnlargeImage(Sprite s, string d)
     {
         if (enlargePanel != null && enlargeImage != null && enlargeText != null)
         {
-            enlargeImage.sprite = sprite;
-            enlargeText.text = description;
-            enlargePanel.transform.localScale = Vector3.zero;
+            enlargeImage.sprite = s;
+            enlargeText.text = d;
             enlargePanel.SetActive(true);
+            enlargePanel.transform.localScale = Vector3.zero;
             CoroutineRunner.Instance.Run(AnimatePanelOpen(enlargePanel, 0.2f, enlargePanelOriginalScale));
         }
     }
@@ -93,10 +96,7 @@ public class PictureFolder : MonoBehaviour
 
     public void CloseEnlargePanel()
     {
-        if (enlargePanel != null)
-        {
-            CoroutineRunner.Instance.Run(AnimatePanelClose(enlargePanel, 0.2f));
-        }
+        if (enlargePanel != null) CoroutineRunner.Instance.Run(AnimatePanelClose(enlargePanel, 0.2f));
     }
 
     private IEnumerator AnimatePanelClose(GameObject panel, float duration)
@@ -137,4 +137,3 @@ public class PictureFolder : MonoBehaviour
         panel.transform.localScale = folderPanelOriginalScale;
     }
 }
-
