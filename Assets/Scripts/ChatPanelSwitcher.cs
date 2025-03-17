@@ -29,7 +29,7 @@ public class ChatPanelSwitcher : MonoBehaviour
         ShowMomPanel();
 
         
-        if (!voidActivated) StartCoroutine(WaitAndShowVoid(10f));
+        if (!voidActivated) StartCoroutine(WaitAndShowVoid(1f));
     }
 
     IEnumerator WaitAndShowVoid(float delay)
