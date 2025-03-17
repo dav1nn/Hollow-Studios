@@ -26,6 +26,8 @@ public class ConversationManager : MonoBehaviour
 
     public void StartConversation()
     {
+        Debug.Log("Conversation started.");
+        
         if (!conversationStarted)
         {
             conversationStarted = true;
@@ -111,7 +113,7 @@ public class ConversationManager : MonoBehaviour
 
         for (int i = 0; i < responseButtons.Length; i++)
         {
-            if (i < responses.Length)
+            if (i < responses.Length && !string.IsNullOrEmpty(responses[i]))
             {
                 responseButtons[i].gameObject.SetActive(true);
                 responseButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = responses[i];
@@ -136,3 +138,4 @@ public class ConversationManager : MonoBehaviour
         chatPanel.SetActive(false);
     }
 }
+
