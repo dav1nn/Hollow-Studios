@@ -14,7 +14,7 @@ public class WallTrigger : MonoBehaviour
     public Volume postProcessVolume;
     public Image crosshair;
     public float fadeDuration = 2f;
-    public string nextSceneName = "Pro 2";
+    public string nextSceneName = "Pro 3";
 
     private ColorAdjustments colorAdjustments;
     private bool triggered = false;
@@ -38,7 +38,6 @@ public class WallTrigger : MonoBehaviour
             StartCoroutine(ChangeTextsAfterDelay());
             if (sphere != null)
                 StartCoroutine(RemoveSphereAfterDelay());
-
             StartCoroutine(FadeToBlack());
         }
     }
@@ -61,37 +60,33 @@ public class WallTrigger : MonoBehaviour
 
     IEnumerator FadeToBlack()
     {
-        yield return new WaitForSeconds(10f);
-
+        yield return new WaitForSeconds(7f);
         if (postProcessVolume == null || colorAdjustments == null)
             yield break;
-
         float timer = 0f;
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
             colorAdjustments.colorFilter.value = Color.Lerp(Color.white, Color.black, timer / fadeDuration);
-
             if (crosshair != null)
             {
                 Color crosshairColor = crosshair.color;
                 crosshairColor.a = Mathf.Lerp(1f, 0f, timer / fadeDuration);
                 crosshair.color = crosshairColor;
             }
-
             yield return null;
         }
-
         colorAdjustments.colorFilter.value = Color.black;
-
         if (crosshair != null)
             crosshair.gameObject.SetActive(false);
-
         yield return new WaitForSeconds(2f);
-
         SceneManager.LoadScene(nextSceneName);
     }
 }
+
+
+
+
 
 
 
