@@ -1,0 +1,101 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class WallTrigger : MonoBehaviour
+{
+    public GameObject[] walls;
+    public CodeFlicker[] codeFlickers;
+    public string newCharacters = "HAHAHAH";
+    public GameObject sphere;
+    public Volume postProcessVolume;
+    public Image crosshair;
+    public float fadeDuration = 2f;
+    public string nextSceneName = "Pro 2";
+
+    private ColorAdjustments colorAdjustments;
+    private bool triggered = false;
+
+    void Start()
+    {
+        if (postProcessVolume != null)
+            postProcessVolume.profile.TryGet(out colorAdjustments);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (!triggered && other.CompareTag("Player"))
+        {
+            triggered = true;
+            foreach (GameObject wall in walls)
+            {
+                if (wall != null)
+                    wall.SetActive(true);
+            }
+            StartCoroutine(ChangeTextsAfterDelay());
+            if (sphere != null)
+                StartCoroutine(RemoveSphereAfterDelay());
+
+            StartCoroutine(FadeToBlack());
+        }
+    }
+
+    IEnumerator ChangeTextsAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        foreach (CodeFlicker codeFlicker in codeFlickers)
+        {
+            if (codeFlicker != null)
+                codeFlicker.UpdateToRed(newCharacters);
+        }
+    }
+
+    IEnumerator RemoveSphereAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        sphere.SetActive(false);
+    }
+
+    IEnumerator FadeToBlack()
+    {
+        yield return new WaitForSeconds(10f);
+
+        if (postProcessVolume == null || colorAdjustments == null)
+            yield break;
+
+        float timer = 0f;
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            colorAdjustments.colorFilter.value = Color.Lerp(Color.white, Color.black, timer / fadeDuration);
+
+            if (crosshair != null)
+            {
+                Color crosshairColor = crosshair.color;
+                crosshairColor.a = Mathf.Lerp(1f, 0f, timer / fadeDuration);
+                crosshair.color = crosshairColor;
+            }
+
+            yield return null;
+        }
+
+        colorAdjustments.colorFilter.value = Color.black;
+
+        if (crosshair != null)
+            crosshair.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(2f);
+
+        SceneManager.LoadScene(nextSceneName);
+    }
+}
+
+
+
+
+
+
+
