@@ -5,10 +5,17 @@ using TMPro;
 
 public class ConversationManager : MonoBehaviour
 {
+    [Header("Main Chat Panel")]
     public GameObject chatPanel;
     public TextMeshProUGUI npcText;
     public Button[] responseButtons;
+
+    [Header("Optional Additional Button to Disable")]
+    public Button extraButton;
+
+    [Header("Dialogue Nodes")]
     public DialogueNode[] nodes;
+
     private bool conversationStarted = false;
     private bool isTyping = false;
     private int currentNodeIndex = 0;
@@ -23,7 +30,6 @@ public class ConversationManager : MonoBehaviour
 
     public void StartConversation()
     {
-        Debug.Log("Conversation started.");
         if (!conversationStarted)
         {
             conversationStarted = true;
@@ -64,18 +70,27 @@ public class ConversationManager : MonoBehaviour
     {
         float waitBeforeTyping = Random.Range(2f, 5f);
         yield return new WaitForSeconds(waitBeforeTyping);
+
         string baseText = conversationText + "\n\n<color=#8B0000>Void: is typing</color>";
         typingDotsCoroutine = StartCoroutine(TypeDotsCoroutine(baseText));
+
         float typingDuration = Random.Range(4f, 7f);
         yield return new WaitForSeconds(typingDuration);
+
         if (typingDotsCoroutine != null)
         {
             StopCoroutine(typingDotsCoroutine);
         }
+
         conversationText += "\n\n<color=#8B0000>Void:</color> " + nodes[currentNodeIndex].npcDialogue;
         npcText.text = conversationText;
         isTyping = false;
         UpdateUI();
+
+        if (currentNodeIndex >= nodes.Length - 16)
+        {
+            StartCoroutine(HideChatPanelAfterDelay(3f));
+        }
     }
 
     private IEnumerator TypeDotsCoroutine(string baseText)
@@ -114,10 +129,26 @@ public class ConversationManager : MonoBehaviour
         }
     }
 
+    private IEnumerator HideChatPanelAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (extraButton != null)
+        {
+            extraButton.gameObject.SetActive(false);
+        }
+
+        chatPanel.SetActive(false);
+        conversationStarted = false;
+    }
+
     private void EndConversation()
     {
         chatPanel.SetActive(false);
+        if (extraButton != null)
+        {
+            extraButton.gameObject.SetActive(false);
+        }
+        conversationStarted = false;
     }
 }
-
-
