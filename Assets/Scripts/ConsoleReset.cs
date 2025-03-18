@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -20,11 +22,28 @@ public class ConsoleReset : MonoBehaviour
     private int maxLines = 10;
     private int maxCharactersPerLine = 30;
 
+    
+    public Image shutdownEffectImage;
+    public float fadeDuration = 2f;
+    public string nextScene = "3D";
+
     void Start()
     {
-        if (consoleOutputText != null) consoleOutputText.text = "";
-        if (youOutputText != null) youOutputText.text = "";
-        youOutputText.gameObject.SetActive(false);
+        if (consoleOutputText != null)
+            consoleOutputText.text = "";
+        if (youOutputText != null)
+        {
+            youOutputText.text = "";
+            youOutputText.gameObject.SetActive(false);
+        }
+        if (shutdownEffectImage != null)
+        {
+            
+            Color c = shutdownEffectImage.color;
+            c.a = 0f;
+            shutdownEffectImage.color = c;
+            shutdownEffectImage.gameObject.SetActive(false);
+        }
     }
 
     public void OnInputSubmit()
@@ -43,6 +62,10 @@ public class ConsoleReset : MonoBehaviour
                     consoleOutputText.text = "";
                     StartCoroutine(TypeNumbersLoop());
                 }
+            }
+            else if (userInput.Equals("ENTERTHEVOID.EXE", System.StringComparison.OrdinalIgnoreCase))
+            {
+                StartCoroutine(HandleShutdownEffect());
             }
             else
             {
@@ -85,18 +108,19 @@ public class ConsoleReset : MonoBehaviour
             GenerateNumberSequence();
             youOutputText.text = "";
             shakyIndices.Clear();
-            int counter = 0;
             int lineCount = 0;
             int currentLineLength = 0;
             foreach (string num in numberSequence)
             {
-                if (lineCount >= maxLines) break;
+                if (lineCount >= maxLines)
+                    break;
                 if (currentLineLength + num.Length + 1 > maxCharactersPerLine)
                 {
                     youOutputText.text += "\n";
                     lineCount++;
                     currentLineLength = 0;
-                    if (lineCount >= maxLines) break;
+                    if (lineCount >= maxLines)
+                        break;
                 }
                 youOutputText.text += num + " ";
                 currentLineLength += num.Length + 1;
@@ -104,7 +128,6 @@ public class ConsoleReset : MonoBehaviour
                 {
                     shakyIndices.Add(youOutputText.text.Length - num.Length - 1);
                 }
-                counter++;
                 yield return new WaitForSeconds(0.02f);
             }
             StartCoroutine(ApplyShakyEffect());
@@ -116,13 +139,15 @@ public class ConsoleReset : MonoBehaviour
     {
         while (true)
         {
-            if (youOutputText == null) yield break;
+            if (youOutputText == null)
+                yield break;
             youOutputText.ForceMeshUpdate();
             textInfo = youOutputText.textInfo;
             for (int i = 0; i < textInfo.characterCount; i++)
             {
                 TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
-                if (!charInfo.isVisible) continue;
+                if (!charInfo.isVisible)
+                    continue;
                 if (shakyIndices.Contains(charInfo.index))
                 {
                     var meshInfo = textInfo.meshInfo[charInfo.materialReferenceIndex];
@@ -142,4 +167,32 @@ public class ConsoleReset : MonoBehaviour
             yield return null;
         }
     }
+
+    IEnumerator HandleShutdownEffect()
+    {
+        if (shutdownEffectImage == null)
+        {
+            Debug.LogWarning("Shutdown effect image not assigned.");
+            yield break;
+        }
+        shutdownEffectImage.gameObject.SetActive(true);
+        float timer = 0f;
+        Color c = shutdownEffectImage.color;
+        c.a = 0f;
+        shutdownEffectImage.color = c;
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / fadeDuration;
+            c.a = Mathf.Lerp(0f, 1f, t);
+            shutdownEffectImage.color = c;
+            yield return null;
+        }
+        c.a = 1f;
+        shutdownEffectImage.color = c;
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(nextScene);
+    }
 }
+
+

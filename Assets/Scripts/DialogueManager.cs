@@ -1,7 +1,7 @@
-using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 using System.Collections;
 
 [System.Serializable]
@@ -17,6 +17,10 @@ public class DialogueManager : MonoBehaviour {
     public float typeSpeed = 0.05f;
     public Image shutdownEffectImage;
     public float fadeDuration = 2f;
+    public bool doShutdown = true;
+    public bool hidePanelAfterTyping = false;
+    public GameObject dialoguePanel;
+    
     private int dialogueIndex = 0;
     private Coroutine typingCoroutine;
 
@@ -45,32 +49,45 @@ public class DialogueManager : MonoBehaviour {
     void DisplayDialogue(Dialogue dialogue) {
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
+        
+        bool hidePanel = hidePanelAfterTyping && AllAnswersEmpty(dialogue.answers);
         if (AllAnswersEmpty(dialogue.answers)) {
-            typingCoroutine = StartCoroutine(TypeTextAndShutdown(dialogue.question));
+            if (doShutdown)
+                typingCoroutine = StartCoroutine(TypeTextAndShutdown(dialogue.question, hidePanel));
+            else
+                typingCoroutine = StartCoroutine(TypeText(dialogue.question, hidePanel));
         } else {
-            typingCoroutine = StartCoroutine(TypeText(dialogue.question));
+            typingCoroutine = StartCoroutine(TypeText(dialogue.question, false));
         }
         UpdateButtons(dialogue.answers);
     }
 
-    IEnumerator TypeText(string message) {
+    IEnumerator TypeText(string message, bool hidePanel) {
         dialogueText.text = "";
         foreach (char letter in message.ToCharArray()) {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typeSpeed);
+        }
+        if (hidePanel && dialoguePanel != null) {
+            yield return new WaitForSeconds(2f);
+            dialoguePanel.SetActive(false);
         }
     }
 
-    IEnumerator TypeTextAndShutdown(string message) {
+    IEnumerator TypeTextAndShutdown(string message, bool hidePanel) {
         dialogueText.text = "";
         foreach (char letter in message.ToCharArray()) {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typeSpeed);
         }
         yield return new WaitForSeconds(2f);
-        yield return StartCoroutine(ShutdownEffect());
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Pro 2");
+        if (hidePanel && dialoguePanel != null)
+            dialoguePanel.SetActive(false);
+        if (doShutdown && shutdownEffectImage != null) {
+            yield return StartCoroutine(ShutdownEffect());
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene("Pro 2");
+        }
     }
 
     void UpdateButtons(string[] answers) {
@@ -116,6 +133,13 @@ public class DialogueManager : MonoBehaviour {
         shutdownEffectImage.color = c;
     }
 }
+
+
+
+
+
+
+
 
 
 
