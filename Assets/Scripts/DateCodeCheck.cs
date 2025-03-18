@@ -9,12 +9,16 @@ public class DateCodeCheck : MonoBehaviour
     public TMP_InputField monthInput;
     public TMP_InputField yearInput;
     public TMP_Text accessDeniedText;
+    public TMP_Text warningText;
+    public TMP_Text extraWarningText;
+    public TMP_Text finalWarningText;
     public GameObject currentGameObject;
     public GameObject nextGameObject;
     public Button nextButton;
 
     private Color originalButtonColor;
     private string originalButtonText;
+    private int errorCount = 0;
 
     void Start()
     {
@@ -24,6 +28,9 @@ public class DateCodeCheck : MonoBehaviour
         dayInput.onValueChanged.AddListener(delegate { ValidateInputs(); });
         monthInput.onValueChanged.AddListener(delegate { ValidateInputs(); });
         yearInput.onValueChanged.AddListener(delegate { ValidateInputs(); });
+        warningText.gameObject.SetActive(false);
+        extraWarningText.gameObject.SetActive(false);
+        finalWarningText.gameObject.SetActive(false);
     }
 
     void ValidateInputs()
@@ -41,6 +48,19 @@ public class DateCodeCheck : MonoBehaviour
         }
         else
         {
+            errorCount++;
+            if (errorCount == 3)
+            {
+                StartCoroutine(FadeInText(warningText));
+            }
+            if (errorCount == 8)
+            {
+                StartCoroutine(FadeInText(extraWarningText));
+            }
+            if (errorCount == 14)
+            {
+                StartCoroutine(FadeInText(finalWarningText));
+            }
             StartCoroutine(ShowErrorFeedback());
         }
     }
@@ -86,5 +106,20 @@ public class DateCodeCheck : MonoBehaviour
         currentGameObject.transform.localScale = originalScale;
         currentGameObject.transform.localPosition = originalPos;
         nextGameObject.SetActive(true);
+    }
+
+    IEnumerator FadeInText(TMP_Text text)
+    {
+        text.gameObject.SetActive(true);
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
+        float elapsedTime = 0f;
+        float duration = 1f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Clamp01(elapsedTime / duration);
+            text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
+            yield return null;
+        }
     }
 }
