@@ -2927,7 +2927,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2952,8 +2952,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7
-  m_fontSizeBase: 7
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2991,7 +2991,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &142032827
@@ -8835,6 +8835,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1828678023}
+  voidPanel: {fileID: 0}
+  consolePanelName: ConsolePanel
   conversationManager: {fileID: 0}
 --- !u!114 &432628123
 MonoBehaviour:
@@ -10571,7 +10573,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -10596,8 +10598,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7
-  m_fontSizeBase: 7
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10635,7 +10637,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &562216279
@@ -19580,6 +19582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 178404454}
+  voidPanel: {fileID: 0}
+  consolePanelName: ConsolePanel
   conversationManager: {fileID: 0}
 --- !u!114 &976500740
 MonoBehaviour:
@@ -22041,6 +22045,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1758872257}
+  voidPanel: {fileID: 0}
+  consolePanelName: ConsolePanel
   conversationManager: {fileID: 0}
 --- !u!114 &1061175043
 MonoBehaviour:
@@ -26626,7 +26632,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -26651,8 +26657,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7
-  m_fontSizeBase: 7
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -26690,7 +26696,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1212344028
@@ -38598,6 +38604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1142225535}
+  voidPanel: {fileID: 0}
+  consolePanelName: ConsolePanel
   conversationManager: {fileID: 0}
 --- !u!114 &1724561199
 MonoBehaviour:
@@ -39488,7 +39496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: -4.9999695}
+  m_AnchoredPosition: {x: -5, y: -4.999939}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1747606799
@@ -48209,6 +48217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1075379409}
+  voidPanel: {fileID: 0}
+  consolePanelName: ConsolePanel
   conversationManager: {fileID: 0}
 --- !u!1 &2098381590
 GameObject:
@@ -48665,6 +48675,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1364886203}
+  voidPanel: {fileID: 0}
+  consolePanelName: ConsolePanel
   conversationManager: {fileID: 0}
 --- !u!114 &2107099154
 MonoBehaviour:

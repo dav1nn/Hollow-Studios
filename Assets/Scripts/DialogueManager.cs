@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour {
     
     private int dialogueIndex = 0;
     private Coroutine typingCoroutine;
+    private bool isTyping = false;
 
     void Start() {
         if (dialogues.Length > 0) {
@@ -38,6 +39,8 @@ public class DialogueManager : MonoBehaviour {
     }
 
     public void OnAnswerClicked() {
+        if (isTyping) return; 
+
         dialogueIndex++;
         if (dialogueIndex < dialogues.Length) {
             DisplayDialogue(dialogues[dialogueIndex]);
@@ -50,6 +53,8 @@ public class DialogueManager : MonoBehaviour {
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
         
+        SetButtonsInteractable(false);
+
         bool hidePanel = hidePanelAfterTyping && AllAnswersEmpty(dialogue.answers);
         if (AllAnswersEmpty(dialogue.answers)) {
             if (doShutdown)
@@ -63,11 +68,18 @@ public class DialogueManager : MonoBehaviour {
     }
 
     IEnumerator TypeText(string message, bool hidePanel) {
+        isTyping = true;
         dialogueText.text = "";
+        SetButtonsInteractable(false);
+
         foreach (char letter in message.ToCharArray()) {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typeSpeed);
         }
+
+        isTyping = false;
+        SetButtonsInteractable(true);
+
         if (hidePanel && dialoguePanel != null) {
             yield return new WaitForSeconds(2f);
             dialoguePanel.SetActive(false);
@@ -75,14 +87,22 @@ public class DialogueManager : MonoBehaviour {
     }
 
     IEnumerator TypeTextAndShutdown(string message, bool hidePanel) {
+        isTyping = true;
         dialogueText.text = "";
+        SetButtonsInteractable(false);
+
         foreach (char letter in message.ToCharArray()) {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typeSpeed);
         }
+
+        isTyping = false;
+        SetButtonsInteractable(true);
         yield return new WaitForSeconds(2f);
+        
         if (hidePanel && dialoguePanel != null)
             dialoguePanel.SetActive(false);
+        
         if (doShutdown && shutdownEffectImage != null) {
             yield return StartCoroutine(ShutdownEffect());
             yield return new WaitForSeconds(2f);
@@ -132,11 +152,13 @@ public class DialogueManager : MonoBehaviour {
         c.a = 1f;
         shutdownEffectImage.color = c;
     }
+
+    void SetButtonsInteractable(bool state) {
+        foreach (Button btn in answerButtons) {
+            btn.interactable = state;
+        }
+    }
 }
-
-
-
-
 
 
 
