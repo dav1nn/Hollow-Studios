@@ -181,6 +181,8 @@ public class ConversationManager : MonoBehaviour
             CanvasGroup cg = objectToFadeIn.GetComponent<CanvasGroup>();
             if (cg == null) cg = objectToFadeIn.AddComponent<CanvasGroup>();
             cg.alpha = 0f;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
             float elapsed = 0f;
             while (elapsed < fadeDuration)
             {
@@ -189,6 +191,9 @@ public class ConversationManager : MonoBehaviour
                 yield return null;
             }
             cg.alpha = 1f;
+            cg.interactable = true;
+            cg.blocksRaycasts = true;
+            objectToFadeIn.SetActive(true);
         }
     }
 }
