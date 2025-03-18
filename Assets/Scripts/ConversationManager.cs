@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -15,6 +16,11 @@ public class ConversationManager : MonoBehaviour
 
     [Header("Dialogue Nodes")]
     public DialogueNode[] nodes;
+
+    [Header("Object to Fade In After Last 16 Nodes")]
+    public GameObject objectToFadeIn;
+    public List<GameObject> objectsToDeactivate;
+    public float fadeDuration = 1f;
 
     private bool conversationStarted = false;
     private bool isTyping = false;
@@ -90,6 +96,7 @@ public class ConversationManager : MonoBehaviour
         if (currentNodeIndex >= nodes.Length - 16)
         {
             StartCoroutine(HideChatPanelAfterDelay(3f));
+            StartCoroutine(TriggerFadeInAfterDelay(5f));
         }
     }
 
@@ -150,5 +157,38 @@ public class ConversationManager : MonoBehaviour
             extraButton.gameObject.SetActive(false);
         }
         conversationStarted = false;
+    }
+
+    private IEnumerator TriggerFadeInAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StartCoroutine(FadeInNow());
+    }
+
+    private IEnumerator FadeInNow()
+    {
+        foreach (GameObject obj in objectsToDeactivate)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(false);
+                yield return new WaitForSeconds(0.2f);
+            }
+        }
+        if (objectToFadeIn != null)
+        {
+            objectToFadeIn.SetActive(true);
+            CanvasGroup cg = objectToFadeIn.GetComponent<CanvasGroup>();
+            if (cg == null) cg = objectToFadeIn.AddComponent<CanvasGroup>();
+            cg.alpha = 0f;
+            float elapsed = 0f;
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                cg.alpha = Mathf.Clamp01(elapsed / fadeDuration);
+                yield return null;
+            }
+            cg.alpha = 1f;
+        }
     }
 }
