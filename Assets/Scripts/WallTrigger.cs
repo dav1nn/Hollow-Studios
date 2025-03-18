@@ -44,7 +44,7 @@ public class WallTrigger : MonoBehaviour
 
     IEnumerator ChangeTextsAfterDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.1f);
         foreach (CodeFlicker codeFlicker in codeFlickers)
         {
             if (codeFlicker != null)
@@ -54,13 +54,13 @@ public class WallTrigger : MonoBehaviour
 
     IEnumerator RemoveSphereAfterDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.1f);
         sphere.SetActive(false);
     }
 
     IEnumerator FadeToBlack()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(5f);
         if (postProcessVolume == null || colorAdjustments == null)
             yield break;
         float timer = 0f;
