@@ -11916,6 +11916,7 @@ GameObject:
   - component: {fileID: 580647132}
   - component: {fileID: 580647134}
   - component: {fileID: 580647133}
+  - component: {fileID: 580647135}
   m_Layer: 5
   m_Name: Drag
   m_TagString: Folder
@@ -11981,6 +11982,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580647131}
   m_CullTransparentMesh: 1
+--- !u!114 &580647135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580647131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a458272d747cad84d8925c0c4158cdd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelRectTransform: {fileID: 1443673725}
+  zoneTag: zone
+  taskbarLayerName: taskbar
 --- !u!1 &599971011
 GameObject:
   m_ObjectHideFlags: 0
@@ -20707,7 +20723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &976500738
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23633,7 +23649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1075379410
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32160,7 +32176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU
+  m_text: Y0U
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
   m_sharedMaterial: {fileID: 5432662073017269102, guid: 3dd493dccc81b674db142b421b6d725e, type: 2}
@@ -34910,6 +34926,8 @@ MonoBehaviour:
   currentGameObject: {fileID: 1443673724}
   nextButton: {fileID: 172652115}
   consoleResponse: {fileID: 557129574}
+  objectsToDisable:
+  - {fileID: 1075379409}
 --- !u!1 &1445301698
 GameObject:
   m_ObjectHideFlags: 0
@@ -40956,7 +40974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1758872258
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49855,7 +49873,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.010986328, y: 0.000030517578}
-  m_SizeDelta: {x: 78.163, y: 0}
+  m_SizeDelta: {x: 78.163, y: 122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2139152830
 MonoBehaviour:

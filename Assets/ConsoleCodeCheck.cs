@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ConsoleCodeCheck : MonoBehaviour
 {
@@ -15,10 +16,12 @@ public class ConsoleCodeCheck : MonoBehaviour
     public GameObject currentGameObject;
     public Button nextButton;
     public TMP_Text consoleResponse;
+    public List<GameObject> objectsToDisable;
 
     private Color originalButtonColor;
     private string originalButtonText;
     private int errorCount = 0;
+    private static HashSet<GameObject> disabledObjects = new HashSet<GameObject>();
 
     void Start()
     {
@@ -31,6 +34,14 @@ public class ConsoleCodeCheck : MonoBehaviour
         warningText.gameObject.SetActive(false);
         extraWarningText.gameObject.SetActive(false);
         finalWarningText.gameObject.SetActive(false);
+
+        foreach (GameObject obj in disabledObjects)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(false);
+            }
+        }
     }
 
     void ValidateInputs()
@@ -48,6 +59,15 @@ public class ConsoleCodeCheck : MonoBehaviour
             input2.gameObject.SetActive(false);
             input3.gameObject.SetActive(false);
             consoleResponse.gameObject.SetActive(false);
+
+            foreach (GameObject obj in objectsToDisable)
+            {
+                if (obj != null)
+                {
+                    obj.SetActive(false);
+                    disabledObjects.Add(obj);
+                }
+            }
         }
         else
         {
@@ -91,6 +111,17 @@ public class ConsoleCodeCheck : MonoBehaviour
             float alpha = Mathf.Clamp01(elapsedTime / duration);
             text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
             yield return null;
+        }
+    }
+
+    void Update()
+    {
+        foreach (GameObject obj in disabledObjects)
+        {
+            if (obj != null && obj.activeSelf)
+            {
+                obj.SetActive(false);
+            }
         }
     }
 }
