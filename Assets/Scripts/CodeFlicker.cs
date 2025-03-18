@@ -9,13 +9,17 @@ public class CodeFlicker : MonoBehaviour
     public float updateInterval = 2f;
     public int totalCharacters = 8000;
     public string codeCharacters = "01<>!@#$%^&*(){}[];:'\",.\\|/?+-=";
-    private bool isRed = false;
+    public bool startWithRed = false; 
+
+    private bool isRed;
     private Coroutine codeCoroutine;
 
     void Start()
     {
         if (codeText == null)
             codeText = GetComponent<TextMeshProUGUI>();
+
+        isRed = startWithRed; 
         codeCoroutine = StartCoroutine(UpdateCode());
     }
 
@@ -25,9 +29,9 @@ public class CodeFlicker : MonoBehaviour
         {
             string generatedCode = GenerateCode(totalCharacters);
             if (isRed)
-                codeText.text = $"<color=#FF0000>{generatedCode}</color>";
+                codeText.text = $"<color=#FF0000>{generatedCode}</color>"; 
             else
-                codeText.text = $"<color=#00FF00>{generatedCode}</color>";
+                codeText.text = $"<color=#00FF00>{generatedCode}</color>"; 
 
             yield return new WaitForSeconds(updateInterval);
         }
@@ -50,6 +54,7 @@ public class CodeFlicker : MonoBehaviour
         return sb.ToString();
     }
 }
+
 
 
 

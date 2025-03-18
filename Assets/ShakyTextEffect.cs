@@ -1,25 +1,31 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ShakyTextEffect : MonoBehaviour
 {
     public TMP_Text textMeshPro;
+    public Image targetImage; 
     public float shakeIntensity = 2f;
     public float shakeSpeed = 50f;
     public Color blinkColor = new Color(28f / 255f, 237f / 255f, 4f / 255f);
 
     private Vector3[] originalVertices;
     private TMP_TextInfo textInfo;
-    private Color originalColor;
-    private bool isBlinking = false;
+    private Color originalTextColor;
+    private Color originalImageColor;
 
     void Start()
     {
         if (textMeshPro == null)
             textMeshPro = GetComponent<TMP_Text>();
 
-        originalColor = textMeshPro.color;
+        originalTextColor = textMeshPro.color;
+        
+        if (targetImage != null)
+            originalImageColor = targetImage.color;
+
         StartCoroutine(BlinkEffect());
     }
 
@@ -55,8 +61,14 @@ public class ShakyTextEffect : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
 
             textMeshPro.color = blinkColor;
+            if (targetImage != null)
+                targetImage.color = blinkColor;
+
             yield return new WaitForSeconds(0.1f);
-            textMeshPro.color = originalColor;
+
+            textMeshPro.color = originalTextColor;
+            if (targetImage != null)
+                targetImage.color = originalImageColor;
         }
     }
 }
