@@ -3057,7 +3057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &167055995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9403,6 +9403,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1828678023}
+  voidPanel: {fileID: 864767621}
+  consolePanelName: chatPanel
   conversationManager: {fileID: 0}
 --- !u!114 &432628123
 MonoBehaviour:
@@ -20784,6 +20786,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1443673724}
+  voidPanel: {fileID: 0}
+  consolePanelName: ConsolePanel
   conversationManager: {fileID: 0}
 --- !u!114 &976500740
 MonoBehaviour:
@@ -22680,6 +22684,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1758872257}
+  voidPanel: {fileID: 864767621}
+  consolePanelName: consolePanel
   conversationManager: {fileID: 0}
 --- !u!114 &1061175043
 MonoBehaviour:
@@ -28908,7 +28914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1255283073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35014,6 +35020,11 @@ MonoBehaviour:
   consoleResponse: {fileID: 557129574}
   objectsToDisable:
   - {fileID: 1075379409}
+  noahConsoleMessages: []
+  consoleInput: {fileID: 0}
+  textToHide: {fileID: 0}
+  textToFadeIn: {fileID: 0}
+  textFadeSpeed: 1
 --- !u!1 &1445301698
 GameObject:
   m_ObjectHideFlags: 0
@@ -40312,6 +40323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1142225535}
+  voidPanel: {fileID: 864767621}
+  consolePanelName: notePanel
   conversationManager: {fileID: 0}
 --- !u!114 &1724561199
 MonoBehaviour:
@@ -49900,6 +49913,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1075379409}
+  voidPanel: {fileID: 864767621}
+  consolePanelName: picPanel
   conversationManager: {fileID: 0}
 --- !u!1 &2107099151
 GameObject:
@@ -49954,6 +49969,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleClickTime: 0.3
   filePanel: {fileID: 1364886203}
+  voidPanel: {fileID: 864767621}
+  consolePanelName: settingsPanel
   conversationManager: {fileID: 0}
 --- !u!114 &2107099154
 MonoBehaviour:
