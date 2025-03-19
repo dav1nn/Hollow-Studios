@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -21,7 +22,9 @@ public class ConsoleCodeCheck : MonoBehaviour
     public TMP_InputField consoleInput;
     public TMP_Text textToHide;
     public TMP_Text textToFadeIn;
+    public Image fadeImage;
     public float textFadeSpeed = 1f;
+    public float fadeDuration = 2f;
 
     private Color originalButtonColor;
     private string originalButtonText;
@@ -30,6 +33,7 @@ public class ConsoleCodeCheck : MonoBehaviour
     private int messageIndex = 0;
     private bool displayingText = false;
     private bool codeAccepted = false;
+    private bool transitionStarted = false;
 
     void Start()
     {
@@ -43,7 +47,7 @@ public class ConsoleCodeCheck : MonoBehaviour
         extraWarningText.gameObject.SetActive(false);
         finalWarningText.gameObject.SetActive(false);
         textToFadeIn.gameObject.SetActive(false);
-
+        fadeImage.gameObject.SetActive(false);
         foreach (GameObject obj in disabledObjects)
         {
             if (obj != null)
@@ -51,7 +55,6 @@ public class ConsoleCodeCheck : MonoBehaviour
                 obj.SetActive(false);
             }
         }
-
         foreach (TMP_Text message in noahConsoleMessages)
         {
             message.gameObject.SetActive(false);
@@ -80,7 +83,6 @@ public class ConsoleCodeCheck : MonoBehaviour
                 nextButton.GetComponentInChildren<TMP_Text>().text = "CONTINUE";
                 textToHide.gameObject.SetActive(false);
                 StartCoroutine(FadeInText(textToFadeIn));
-
                 foreach (GameObject obj in objectsToDisable)
                 {
                     if (obj != null)
@@ -159,10 +161,14 @@ public class ConsoleCodeCheck : MonoBehaviour
             {
                 noahConsoleMessages[messageIndex - 1].gameObject.SetActive(false);
             }
-
             nextButton.interactable = false;
             StartCoroutine(TypeMessage(noahConsoleMessages[messageIndex]));
             messageIndex++;
+        }
+        else if (!transitionStarted)
+        {
+            transitionStarted = true;
+            StartCoroutine(FadeToBlackAndLoadScene());
         }
     }
 
@@ -178,6 +184,32 @@ public class ConsoleCodeCheck : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         displayingText = false;
-        nextButton.interactable = true;
+        if (messageIndex == noahConsoleMessages.Count && !transitionStarted)
+        {
+            transitionStarted = true;
+            yield return new WaitForSeconds(5);
+            StartCoroutine(FadeToBlackAndLoadScene());
+        }
+        else
+        {
+            nextButton.interactable = true;
+        }
+    }
+
+    IEnumerator FadeToBlackAndLoadScene()
+    {
+        fadeImage.gameObject.SetActive(true);
+        Color c = fadeImage.color;
+        c.a = 0;
+        fadeImage.color = c;
+        float elapsedTime = 0f;
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Clamp01(elapsedTime / fadeDuration);
+            fadeImage.color = new Color(c.r, c.g, c.b, alpha);
+            yield return null;
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
