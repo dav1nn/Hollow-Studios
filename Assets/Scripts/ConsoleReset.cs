@@ -11,9 +11,12 @@ public class ConsoleReset : MonoBehaviour
     public TextMeshProUGUI consoleOutputText;
     public TextMeshProUGUI youOutputText;
     public Transform[] WindowsToReset;
+    public AudioSource shakeSound;
+    public ConsoleCodeCheck consoleCodeCheck; 
 
     private List<string> numberSequence = new List<string>();
     private bool isTyping = false;
+    private bool stopTyping = false;
 
     public float shakeIntensity = 2f;
     public float shakeSpeed = 50f;
@@ -30,17 +33,28 @@ public class ConsoleReset : MonoBehaviour
     {
         if (consoleOutputText != null)
             consoleOutputText.text = "";
+
         if (youOutputText != null)
         {
             youOutputText.text = "";
             youOutputText.gameObject.SetActive(false);
         }
+
         if (shutdownEffectImage != null)
         {
             Color c = shutdownEffectImage.color;
             c.a = 0f;
             shutdownEffectImage.color = c;
             shutdownEffectImage.gameObject.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        
+        if (consoleCodeCheck != null && consoleCodeCheck.codeAccepted)
+        {
+            StopNumbersAndSound();
         }
     }
 
@@ -53,13 +67,11 @@ public class ConsoleReset : MonoBehaviour
             {
                 ResetConsole();
             }
-            else if (userInput.Equals("YOU", System.StringComparison.OrdinalIgnoreCase))
+            else if (userInput.Equals("YOU", System.StringComparison.OrdinalIgnoreCase) && !isTyping)
             {
-                if (!isTyping)
-                {
-                    consoleOutputText.text = "";
-                    StartCoroutine(TypeNumbersLoop());
-                }
+                consoleOutputText.text = "";
+                stopTyping = false;
+                StartCoroutine(TypeNumbersLoop());
             }
             else if (userInput.Equals("ENTERTHEVOID.EXE", System.StringComparison.OrdinalIgnoreCase))
             {
@@ -75,10 +87,22 @@ public class ConsoleReset : MonoBehaviour
 
     void ResetConsole()
     {
+        StopNumbersAndSound();
+        consoleOutputText.text = "Console has been reset.";
+    }
+
+    void StopNumbersAndSound()
+    {
+        stopTyping = true;
+        isTyping = false;
         youOutputText.text = "";
         youOutputText.gameObject.SetActive(false);
-        consoleOutputText.text = "Console has been reset.";
-        isTyping = false;
+
+        if (shakeSound != null && shakeSound.isPlaying)
+        {
+            shakeSound.Stop();
+        }
+
         StopAllCoroutines();
     }
 
@@ -101,7 +125,13 @@ public class ConsoleReset : MonoBehaviour
     {
         isTyping = true;
         youOutputText.gameObject.SetActive(true);
-        while (true)
+
+        if (shakeSound != null && !shakeSound.isPlaying)
+        {
+            shakeSound.Play();
+        }
+
+        while (!stopTyping)
         {
             GenerateNumberSequence();
             youOutputText.text = "";
@@ -110,7 +140,7 @@ public class ConsoleReset : MonoBehaviour
             int currentLineLength = 0;
             foreach (string num in numberSequence)
             {
-                if (lineCount >= maxLines)
+                if (lineCount >= maxLines || stopTyping)
                     break;
                 if (currentLineLength + num.Length + 1 > maxCharactersPerLine)
                 {
@@ -135,11 +165,20 @@ public class ConsoleReset : MonoBehaviour
             StartCoroutine(ApplyShakyEffect());
             yield return new WaitForSeconds(2f);
         }
+
+        if (shakeSound != null && shakeSound.isPlaying)
+        {
+            shakeSound.Stop();
+        }
+
+        youOutputText.text = "";
+        youOutputText.gameObject.SetActive(false);
+        isTyping = false;
     }
 
     IEnumerator ApplyShakyEffect()
     {
-        while (true)
+        while (!stopTyping)
         {
             if (youOutputText == null)
                 yield break;
@@ -193,3 +232,7 @@ public class ConsoleReset : MonoBehaviour
         SceneManager.LoadScene(nextScene);
     }
 }
+
+
+
+

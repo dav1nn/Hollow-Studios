@@ -32,7 +32,7 @@ public class ConsoleCodeCheck : MonoBehaviour
     private static HashSet<GameObject> disabledObjects = new HashSet<GameObject>();
     private int messageIndex = 0;
     private bool displayingText = false;
-    private bool codeAccepted = false;
+    public bool codeAccepted = false; 
     private bool transitionStarted = false;
 
     void Start()
@@ -79,7 +79,7 @@ public class ConsoleCodeCheck : MonoBehaviour
                 input3.gameObject.SetActive(false);
                 consoleResponse.gameObject.SetActive(false);
                 consoleInput.gameObject.SetActive(false);
-                codeAccepted = true;
+                codeAccepted = true; 
                 warningText.gameObject.SetActive(false);
                 extraWarningText.gameObject.SetActive(false);
                 finalWarningText.gameObject.SetActive(false);
@@ -218,3 +218,4 @@ public class ConsoleCodeCheck : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
+
