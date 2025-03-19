@@ -80,6 +80,9 @@ public class ConsoleCodeCheck : MonoBehaviour
                 consoleResponse.gameObject.SetActive(false);
                 consoleInput.gameObject.SetActive(false);
                 codeAccepted = true;
+                warningText.gameObject.SetActive(false);
+                extraWarningText.gameObject.SetActive(false);
+                finalWarningText.gameObject.SetActive(false);
                 nextButton.GetComponentInChildren<TMP_Text>().text = "CONTINUE";
                 textToHide.gameObject.SetActive(false);
                 StartCoroutine(FadeInText(textToFadeIn));
@@ -119,6 +122,7 @@ public class ConsoleCodeCheck : MonoBehaviour
 
     IEnumerator ShowErrorFeedback()
     {
+        nextButton.interactable = false;
         nextButton.GetComponentInChildren<TMP_Text>().text = "ERROR";
         nextButton.GetComponent<Image>().color = Color.red;
         accessDeniedText.gameObject.SetActive(true);
@@ -126,6 +130,7 @@ public class ConsoleCodeCheck : MonoBehaviour
         nextButton.GetComponentInChildren<TMP_Text>().text = originalButtonText;
         nextButton.GetComponent<Image>().color = originalButtonColor;
         accessDeniedText.gameObject.SetActive(false);
+        nextButton.interactable = true;
     }
 
     IEnumerator FadeInText(TMP_Text text)
