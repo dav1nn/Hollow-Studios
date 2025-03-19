@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901afd0d45bda0942b58f5e4913e2ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: 216c8963808636e44a4b03f49427a5a5, type: 3}
+  customCursor: {fileID: 2800000, guid: 00a5237f87f005041adb827cc32cd2cd, type: 3}
   hotSpot: {x: 0, y: 0}
   cursorMode: 0
 --- !u!4 &930306813
