@@ -1,7 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class DateCodeCheck : MonoBehaviour
 {
@@ -15,22 +15,37 @@ public class DateCodeCheck : MonoBehaviour
     public GameObject currentGameObject;
     public GameObject nextGameObject;
     public Button nextButton;
+    public AudioSource glitchSound;
+    public AudioSource typingSound;
 
     private Color originalButtonColor;
     private string originalButtonText;
     private int errorCount = 0;
+    private float lastPlayTime = 0f;
+    private float typeSoundCooldown = 0.05f;
 
     void Start()
     {
         originalButtonColor = nextButton.GetComponent<Image>().color;
         originalButtonText = nextButton.GetComponentInChildren<TMP_Text>().text;
         nextButton.interactable = false;
-        dayInput.onValueChanged.AddListener(delegate { ValidateInputs(); });
-        monthInput.onValueChanged.AddListener(delegate { ValidateInputs(); });
-        yearInput.onValueChanged.AddListener(delegate { ValidateInputs(); });
+
+        dayInput.onValueChanged.AddListener(delegate { PlayTypingSound(); ValidateInputs(); });
+        monthInput.onValueChanged.AddListener(delegate { PlayTypingSound(); ValidateInputs(); });
+        yearInput.onValueChanged.AddListener(delegate { PlayTypingSound(); ValidateInputs(); });
+
         warningText.gameObject.SetActive(false);
         extraWarningText.gameObject.SetActive(false);
         finalWarningText.gameObject.SetActive(false);
+    }
+
+    void PlayTypingSound()
+    {
+        if (typingSound != null && Time.time - lastPlayTime > typeSoundCooldown)
+        {
+            typingSound.PlayOneShot(typingSound.clip);
+            lastPlayTime = Time.time;
+        }
     }
 
     void ValidateInputs()
@@ -49,18 +64,9 @@ public class DateCodeCheck : MonoBehaviour
         else
         {
             errorCount++;
-            if (errorCount == 3)
-            {
-                StartCoroutine(FadeInText(warningText));
-            }
-            if (errorCount == 8)
-            {
-                StartCoroutine(FadeInText(extraWarningText));
-            }
-            if (errorCount == 14)
-            {
-                StartCoroutine(FadeInText(finalWarningText));
-            }
+            if (errorCount == 3) StartCoroutine(FadeInText(warningText));
+            if (errorCount == 8) StartCoroutine(FadeInText(extraWarningText));
+            if (errorCount == 14) StartCoroutine(FadeInText(finalWarningText));
             StartCoroutine(ShowErrorFeedback());
         }
     }
@@ -84,15 +90,26 @@ public class DateCodeCheck : MonoBehaviour
         Vector3 originalScale = currentGameObject.transform.localScale;
         float glitchDuration = 1f;
         float elapsed = 0f;
+
+        if (glitchSound != null && !glitchSound.isPlaying)
+        {
+            glitchSound.Play();
+        }
+
         while (elapsed < glitchDuration)
         {
             float offsetX = Random.Range(-20f, 20f);
             float offsetY = Random.Range(-20f, 20f);
             currentGameObject.transform.localPosition = originalPos + new Vector3(offsetX, offsetY, 0f);
             yield return new WaitForSeconds(0.01f);
-            currentGameObject.transform.localPosition = originalPos;
             elapsed += 0.01f;
         }
+
+        if (glitchSound != null && glitchSound.isPlaying)
+        {
+            glitchSound.Stop();
+        }
+
         float shrinkDuration = 0.1f;
         float shrinkElapsed = 0f;
         while (shrinkElapsed < shrinkDuration)
@@ -102,6 +119,7 @@ public class DateCodeCheck : MonoBehaviour
             shrinkElapsed += Time.deltaTime;
             yield return null;
         }
+
         currentGameObject.SetActive(false);
         currentGameObject.transform.localScale = originalScale;
         currentGameObject.transform.localPosition = originalPos;

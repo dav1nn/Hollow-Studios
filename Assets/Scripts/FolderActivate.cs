@@ -72,7 +72,7 @@ public class FolderActivate : MonoBehaviour
 
     private IEnumerator HandleTimedEvents()
     {
-        yield return new WaitForSeconds(80f);
+        yield return new WaitForSeconds(1f);
 
         List<GameObject> activeObjects = new List<GameObject>();
         foreach (GameObject go in objectsToDeactivate)
