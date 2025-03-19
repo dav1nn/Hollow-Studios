@@ -40967,6 +40967,8 @@ MonoBehaviour:
   - {fileID: 1075379410}
   - {fileID: 0}
   - {fileID: 1828678024}
+  shakeSound: {fileID: 0}
+  consoleCodeCheck: {fileID: 0}
   shakeIntensity: 2
   shakeSpeed: 50
   shutdownEffectImage: {fileID: 0}
