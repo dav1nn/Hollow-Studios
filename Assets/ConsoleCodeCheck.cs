@@ -25,6 +25,8 @@ public class ConsoleCodeCheck : MonoBehaviour
     public Image fadeImage;
     public float textFadeSpeed = 1f;
     public float fadeDuration = 2f;
+    
+    public AudioSource typingSound;
 
     private Color originalButtonColor;
     private string originalButtonText;
@@ -34,20 +36,27 @@ public class ConsoleCodeCheck : MonoBehaviour
     private bool displayingText = false;
     public bool codeAccepted = false; 
     private bool transitionStarted = false;
+    
+    private float lastPlayTime = 0f;
+    private float typeSoundCooldown = 0.05f;
 
     void Start()
     {
         originalButtonColor = nextButton.GetComponent<Image>().color;
         originalButtonText = nextButton.GetComponentInChildren<TMP_Text>().text;
         nextButton.interactable = false;
-        input1.onValueChanged.AddListener(delegate { ValidateInputs(); });
-        input2.onValueChanged.AddListener(delegate { ValidateInputs(); });
-        input3.onValueChanged.AddListener(delegate { ValidateInputs(); });
+        
+        input1.onValueChanged.AddListener(delegate { PlayTypingSound(); ValidateInputs(); });
+        input2.onValueChanged.AddListener(delegate { PlayTypingSound(); ValidateInputs(); });
+        input3.onValueChanged.AddListener(delegate { PlayTypingSound(); ValidateInputs(); });
+        consoleInput.onValueChanged.AddListener(delegate { PlayTypingSound(); });
+
         warningText.gameObject.SetActive(false);
         extraWarningText.gameObject.SetActive(false);
         finalWarningText.gameObject.SetActive(false);
         textToFadeIn.gameObject.SetActive(false);
         fadeImage.gameObject.SetActive(false);
+
         foreach (GameObject obj in disabledObjects)
         {
             if (obj != null)
@@ -58,6 +67,15 @@ public class ConsoleCodeCheck : MonoBehaviour
         foreach (TMP_Text message in noahConsoleMessages)
         {
             message.gameObject.SetActive(false);
+        }
+    }
+
+    void PlayTypingSound()
+    {
+        if (typingSound != null && Time.time - lastPlayTime > typeSoundCooldown)
+        {
+            typingSound.PlayOneShot(typingSound.clip);
+            lastPlayTime = Time.time;
         }
     }
 
@@ -86,6 +104,7 @@ public class ConsoleCodeCheck : MonoBehaviour
                 nextButton.GetComponentInChildren<TMP_Text>().text = "CONTINUE";
                 textToHide.gameObject.SetActive(false);
                 StartCoroutine(FadeInText(textToFadeIn));
+
                 foreach (GameObject obj in objectsToDisable)
                 {
                     if (obj != null)
