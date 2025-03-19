@@ -1019,15 +1019,15 @@ RectTransform:
   m_GameObject: {fileID: 41355738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.047199145, y: 0.09981236, z: 0.23706432}
+  m_LocalScale: {x: 0.04719914, y: 0.09981236, z: 0.23706432}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1813215221}
-  m_Father: {fileID: 178404455}
+  m_Father: {fileID: 1199225262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.4069, y: -5.1399}
+  m_AnchoredPosition: {x: -2.407001, y: -5.1399}
   m_SizeDelta: {x: 101.99, y: 103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &41355740
@@ -3739,8 +3739,6 @@ RectTransform:
   m_LocalScale: {x: 5.0226398, y: 2.3751, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1199225262}
-  - {fileID: 41355739}
   - {fileID: 2033447149}
   - {fileID: 1100967402}
   - {fileID: 1669488511}
@@ -3750,6 +3748,7 @@ RectTransform:
   - {fileID: 2107290340}
   - {fileID: 1780635284}
   - {fileID: 1743192408}
+  - {fileID: 1199225262}
   m_Father: {fileID: 1028461674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8074,7 +8073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &371000681
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26918,6 +26917,7 @@ GameObject:
   - component: {fileID: 1199225262}
   - component: {fileID: 1199225265}
   - component: {fileID: 1199225264}
+  - component: {fileID: 1199225267}
   m_Layer: 5
   m_Name: Drag
   m_TagString: Folder
@@ -26938,6 +26938,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1839999753}
+  - {fileID: 41355739}
   m_Father: {fileID: 178404455}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -26983,6 +26984,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199225261}
   m_CullTransparentMesh: 1
+--- !u!114 &1199225267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199225261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a458272d747cad84d8925c0c4158cdd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelRectTransform: {fileID: 178404455}
+  zoneTag: zone
+  taskbarLayerName: taskbar
 --- !u!1 &1202940898
 GameObject:
   m_ObjectHideFlags: 0
@@ -31854,7 +31870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1393012560
 RectTransform:
   m_ObjectHideFlags: 0
