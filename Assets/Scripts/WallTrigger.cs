@@ -19,6 +19,10 @@ public class WallTrigger : MonoBehaviour
     private ColorAdjustments colorAdjustments;
     private bool triggered = false;
 
+    public AudioSource soundEffect; 
+    public AudioSource backgroundMusic; 
+    public float musicFadeOutDuration = 4f; 
+
     void Start()
     {
         if (postProcessVolume != null)
@@ -30,11 +34,25 @@ public class WallTrigger : MonoBehaviour
         if (!triggered && other.CompareTag("Player"))
         {
             triggered = true;
+
+            
+            if (soundEffect != null)
+            {
+                soundEffect.Play();
+            }
+
+            
+            if (backgroundMusic != null && backgroundMusic.isPlaying)
+            {
+                StartCoroutine(FadeOutMusic(backgroundMusic, musicFadeOutDuration));
+            }
+
             foreach (GameObject wall in walls)
             {
                 if (wall != null)
                     wall.SetActive(true);
             }
+
             StartCoroutine(ChangeTextsAfterDelay());
             if (sphere != null)
                 StartCoroutine(RemoveSphereAfterDelay());
@@ -82,8 +100,23 @@ public class WallTrigger : MonoBehaviour
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(nextSceneName);
     }
-}
 
+    IEnumerator FadeOutMusic(AudioSource audioSource, float duration)
+    {
+        float startVolume = audioSource.volume;
+
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsedTime / duration);
+            yield return null;
+        }
+
+        audioSource.volume = 0f;
+        audioSource.Stop();
+    }
+}
 
 
 
