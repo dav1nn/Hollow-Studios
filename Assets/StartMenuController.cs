@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using TMPro;
 
 public class StartMenuController : MonoBehaviour
 {
@@ -13,16 +14,14 @@ public class StartMenuController : MonoBehaviour
     public GameObject shutdownCancel;
     public GameObject restartConfirm;
     public GameObject restartCancel;
+    public TMP_Text shutdownText;
+    public TMP_Text restartText;
 
     private bool isStartMenuOpen = false;
 
     void Start()
     {
-        startMenuPanel.SetActive(false);
-        shutdownConfirm.SetActive(false);
-        shutdownCancel.SetActive(false);
-        restartConfirm.SetActive(false);
-        restartCancel.SetActive(false);
+        ResetMenuState();
     }
 
     void Update()
@@ -40,6 +39,10 @@ public class StartMenuController : MonoBehaviour
     {
         isStartMenuOpen = state;
         startMenuPanel.SetActive(state);
+        if (state)
+        {
+            ResetMenuState();
+        }
     }
 
     public void OnUserProfileClick()
@@ -52,6 +55,7 @@ public class StartMenuController : MonoBehaviour
         shutdownButton.SetActive(false);
         shutdownConfirm.SetActive(true);
         shutdownCancel.SetActive(true);
+        shutdownText.gameObject.SetActive(false);
     }
 
     public void ConfirmShutdown()
@@ -67,6 +71,7 @@ public class StartMenuController : MonoBehaviour
         shutdownButton.SetActive(true);
         shutdownConfirm.SetActive(false);
         shutdownCancel.SetActive(false);
+        shutdownText.gameObject.SetActive(true);
     }
 
     public void ShowRestartConfirmation()
@@ -74,6 +79,7 @@ public class StartMenuController : MonoBehaviour
         restartButton.SetActive(false);
         restartConfirm.SetActive(true);
         restartCancel.SetActive(true);
+        restartText.gameObject.SetActive(false);
     }
 
     public void ConfirmRestart()
@@ -86,6 +92,7 @@ public class StartMenuController : MonoBehaviour
         restartButton.SetActive(true);
         restartConfirm.SetActive(false);
         restartCancel.SetActive(false);
+        restartText.gameObject.SetActive(true);
     }
 
     private bool IsClickInsideUI(GameObject uiElement)
@@ -104,5 +111,17 @@ public class StartMenuController : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    private void ResetMenuState()
+    {
+        shutdownButton.SetActive(true);
+        restartButton.SetActive(true);
+        shutdownConfirm.SetActive(false);
+        shutdownCancel.SetActive(false);
+        restartConfirm.SetActive(false);
+        restartCancel.SetActive(false);
+        shutdownText.gameObject.SetActive(true);
+        restartText.gameObject.SetActive(true);
     }
 }
