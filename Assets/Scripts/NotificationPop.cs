@@ -9,6 +9,8 @@ public class NotificationPop : MonoBehaviour
     [SerializeField] private float visibleDuration = 5f;
     [SerializeField] private float popDuration = 0.2f;
     [SerializeField] private GameObject panelToOpen;
+    [SerializeField] private AudioSource popSound;
+
     private Vector3 originalScale;
     private Coroutine notificationRoutine;
 
@@ -30,15 +32,23 @@ public class NotificationPop : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeShow);
         if (!notificationObject) yield break;
+        
+        if (popSound != null)
+        {
+            popSound.Play();
+        }
+
         notificationObject.SetActive(true);
         notificationObject.transform.localScale = Vector3.zero;
         yield return StartCoroutine(AnimatePop(notificationObject, Vector3.zero, originalScale, popDuration));
+        
         float timer = 0f;
         while (timer < visibleDuration)
         {
             timer += Time.deltaTime;
             yield return null;
         }
+        
         yield return StartCoroutine(AnimatePop(notificationObject, originalScale, Vector3.zero, popDuration));
         notificationObject.SetActive(false);
     }
@@ -78,7 +88,6 @@ public class NotificationPop : MonoBehaviour
         obj.transform.localScale = toScale;
     }
 }
-
 
 
 
