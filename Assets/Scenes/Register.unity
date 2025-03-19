@@ -4323,7 +4323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to Eidolon OS
+  m_text: 'Welcome to aVoid OS
 
 '
   m_isRightToLeft: 0
