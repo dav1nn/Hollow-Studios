@@ -22,7 +22,6 @@ public class ConsoleReset : MonoBehaviour
     private int maxLines = 10;
     private int maxCharactersPerLine = 30;
 
-    
     public Image shutdownEffectImage;
     public float fadeDuration = 2f;
     public string nextScene = "3D";
@@ -38,7 +37,6 @@ public class ConsoleReset : MonoBehaviour
         }
         if (shutdownEffectImage != null)
         {
-            
             Color c = shutdownEffectImage.color;
             c.a = 0f;
             shutdownEffectImage.color = c;
@@ -122,11 +120,15 @@ public class ConsoleReset : MonoBehaviour
                     if (lineCount >= maxLines)
                         break;
                 }
+                int startIndex = youOutputText.text.Length;
                 youOutputText.text += num + " ";
                 currentLineLength += num.Length + 1;
                 if (num == "88" || num == "1111" || num == "24")
                 {
-                    shakyIndices.Add(youOutputText.text.Length - num.Length - 1);
+                    for (int i = 0; i < num.Length; i++)
+                    {
+                        shakyIndices.Add(startIndex + i);
+                    }
                 }
                 yield return new WaitForSeconds(0.02f);
             }
@@ -148,7 +150,7 @@ public class ConsoleReset : MonoBehaviour
                 TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
                 if (!charInfo.isVisible)
                     continue;
-                if (shakyIndices.Contains(charInfo.index))
+                if (shakyIndices.Contains(i))
                 {
                     var meshInfo = textInfo.meshInfo[charInfo.materialReferenceIndex];
                     Vector3[] vertices = meshInfo.vertices;
@@ -171,10 +173,7 @@ public class ConsoleReset : MonoBehaviour
     IEnumerator HandleShutdownEffect()
     {
         if (shutdownEffectImage == null)
-        {
-            Debug.LogWarning("Shutdown effect image not assigned.");
             yield break;
-        }
         shutdownEffectImage.gameObject.SetActive(true);
         float timer = 0f;
         Color c = shutdownEffectImage.color;
@@ -194,5 +193,3 @@ public class ConsoleReset : MonoBehaviour
         SceneManager.LoadScene(nextScene);
     }
 }
-
-
