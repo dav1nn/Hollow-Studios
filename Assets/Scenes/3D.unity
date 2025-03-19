@@ -47992,7 +47992,7 @@ MonoBehaviour:
   postProcessVolume: {fileID: 1135603567}
   crosshair: {fileID: 843401226}
   fadeDuration: 2
-  nextSceneName: Pro 3
+  nextSceneName: Pro 4
 --- !u!65 &1895677836
 BoxCollider:
   m_ObjectHideFlags: 0
