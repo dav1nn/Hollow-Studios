@@ -4551,7 +4551,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4652,9 +4652,9 @@ RectTransform:
   - {fileID: 1065545196}
   m_Father: {fileID: 235751197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 13.18985, y: -27.419754}
   m_SizeDelta: {x: 184.95, y: 54.839508}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &247314012
@@ -19516,7 +19516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &864767622
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19561,22 +19561,22 @@ MonoBehaviour:
   - {fileID: 933959960}
   - {fileID: 1556018626}
   dialogues:
-  - question: Dont you dare type in that command you fool
+  - question: Don't you dare type in that command you fool!
     answers:
     - Why not?
     - He needs my help
     - Hes in danger
-  - question: You will enter my realm if you do
+  - question: You will enter my realm if you do.
     answers:
     - So what?
     - I dont fear you
     - I need to save hiim
-  - question: Choose wisely if you value your life
+  - question: Choose wisely if you value your life.
     answers:
     - Im going to save him
     - You are not scary
     - You are not real
-  - question: Then so be it, he made that mistake just like you will
+  - question: Then so be it, he made that mistake just like you will.
     answers:
     - 
     - 
@@ -36464,7 +36464,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -39382,7 +39382,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -41496,9 +41496,9 @@ RectTransform:
   - {fileID: 612202899}
   m_Father: {fileID: 235751197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 13.18985, y: -57.09877}
   m_SizeDelta: {x: 184.95, y: 54.839508}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722566611
@@ -44305,9 +44305,9 @@ RectTransform:
   - {fileID: 1427666127}
   m_Father: {fileID: 235751197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 13.18985, y: -42.259262}
   m_SizeDelta: {x: 184.95, y: 54.839508}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1824925380
@@ -44515,7 +44515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1828678024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49166,9 +49166,9 @@ RectTransform:
   - {fileID: 158481343}
   m_Father: {fileID: 235751197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 13.18985, y: -71.93828}
   m_SizeDelta: {x: 184.95, y: 54.839508}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2025853076
