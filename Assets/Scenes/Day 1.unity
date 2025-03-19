@@ -806,7 +806,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 32983305}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 760888509}
+        m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
+        m_MethodName: CancelRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &32983305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15413,6 +15425,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMenuPanel: {fileID: 2066205234}
   userProfileButton: {fileID: 248198924}
+  shutdownButton: {fileID: 1702291704}
+  restartButton: {fileID: 1571707790}
+  shutdownConfirm: {fileID: 2027586449}
+  shutdownCancel: {fileID: 1086999952}
+  restartConfirm: {fileID: 1029704395}
+  restartCancel: {fileID: 32983302}
 --- !u!1 &762040181
 GameObject:
   m_ObjectHideFlags: 0
@@ -21399,7 +21417,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1029704398}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 760888509}
+        m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
+        m_MethodName: ConfirmRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1029704398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23913,7 +23943,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1086999955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 760888509}
+        m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
+        m_MethodName: CancelShutdown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1086999955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36116,7 +36158,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1571707793}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 760888509}
+        m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
+        m_MethodName: ShowRestartConfirmation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1571707793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38804,7 +38858,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1702291707}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 760888509}
+        m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
+        m_MethodName: ShowShutdownConfirmation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1702291707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48530,7 +48596,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2027586452}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 760888509}
+        m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
+        m_MethodName: ConfirmShutdown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2027586452
 MonoBehaviour:
   m_ObjectHideFlags: 0

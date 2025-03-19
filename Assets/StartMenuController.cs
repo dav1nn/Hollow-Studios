@@ -7,12 +7,22 @@ public class StartMenuController : MonoBehaviour
 {
     public GameObject startMenuPanel;
     public GameObject userProfileButton;
+    public GameObject shutdownButton;
+    public GameObject restartButton;
+    public GameObject shutdownConfirm;
+    public GameObject shutdownCancel;
+    public GameObject restartConfirm;
+    public GameObject restartCancel;
 
     private bool isStartMenuOpen = false;
 
     void Start()
     {
         startMenuPanel.SetActive(false);
+        shutdownConfirm.SetActive(false);
+        shutdownCancel.SetActive(false);
+        restartConfirm.SetActive(false);
+        restartCancel.SetActive(false);
     }
 
     void Update()
@@ -37,7 +47,14 @@ public class StartMenuController : MonoBehaviour
         ToggleStartMenu(!isStartMenuOpen);
     }
 
-    public void QuitGame()
+    public void ShowShutdownConfirmation()
+    {
+        shutdownButton.SetActive(false);
+        shutdownConfirm.SetActive(true);
+        shutdownCancel.SetActive(true);
+    }
+
+    public void ConfirmShutdown()
     {
         Application.Quit();
 #if UNITY_EDITOR
@@ -45,9 +62,30 @@ public class StartMenuController : MonoBehaviour
 #endif
     }
 
-    public void RestartGame()
+    public void CancelShutdown()
+    {
+        shutdownButton.SetActive(true);
+        shutdownConfirm.SetActive(false);
+        shutdownCancel.SetActive(false);
+    }
+
+    public void ShowRestartConfirmation()
+    {
+        restartButton.SetActive(false);
+        restartConfirm.SetActive(true);
+        restartCancel.SetActive(true);
+    }
+
+    public void ConfirmRestart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void CancelRestart()
+    {
+        restartButton.SetActive(true);
+        restartConfirm.SetActive(false);
+        restartCancel.SetActive(false);
     }
 
     private bool IsClickInsideUI(GameObject uiElement)
