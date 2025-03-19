@@ -1,50 +1,45 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PowerButtonController : MonoBehaviour
 {
     public Button powerButton;
-    public VideoPlayer videoPlayer;
     public string nextSceneName = "login";
-
-    private bool isVideoPlaying = false;
+    public GameObject flashScreen;
+    private bool isFlashing = false;
 
     void Start()
     {
-        videoPlayer.gameObject.SetActive(false);
+        flashScreen.SetActive(false);
         powerButton.onClick.AddListener(OnPowerButtonClick);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isVideoPlaying)
+        if (Input.GetKeyDown(KeyCode.Space) && !isFlashing)
         {
-            PlayVideo();
+            FlashScreen();
         }
     }
 
     void OnPowerButtonClick()
     {
-        if (!isVideoPlaying)
+        if (!isFlashing)
         {
-            PlayVideo();
+            FlashScreen();
         }
     }
 
-    void PlayVideo()
+    void FlashScreen()
     {
-        powerButton.interactable = false;
-        videoPlayer.gameObject.SetActive(true);
-        videoPlayer.Play();
-        isVideoPlaying = true;
-        videoPlayer.loopPointReached += OnVideoEnd;
+        isFlashing = true;
+        flashScreen.SetActive(true);
+        LoadNextScene();
     }
 
-    void OnVideoEnd(VideoPlayer vp)
+    void LoadNextScene()
     {
-        vp.loopPointReached -= OnVideoEnd;
         SceneManager.LoadScene(nextSceneName);
     }
 }
