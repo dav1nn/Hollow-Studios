@@ -72,7 +72,7 @@ public class FolderActivate : MonoBehaviour
 
     private IEnumerator HandleTimedEvents()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(80f);
 
         List<GameObject> activeObjects = new List<GameObject>();
         foreach (GameObject go in objectsToDeactivate)
@@ -97,7 +97,7 @@ public class FolderActivate : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        float timeSoFar = 10f + activeObjects.Count * 0.1f;
+        float timeSoFar = 80f + activeObjects.Count * 0.1f;
         float remaining = 12f - timeSoFar;
         if (remaining > 0f) yield return new WaitForSeconds(remaining);
 
