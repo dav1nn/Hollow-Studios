@@ -32,6 +32,7 @@ public class LoginValidator : MonoBehaviour
 
     void AttemptLogin()
     {
+        savedPassword = PlayerPrefs.GetString("PlayerPassword", string.Empty);
         string enteredPassword = passwordField.text;
 
         if (enteredPassword == savedPassword)
