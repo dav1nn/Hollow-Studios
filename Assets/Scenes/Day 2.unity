@@ -45551,6 +45551,7 @@ MonoBehaviour:
   - {fileID: 1828678024}
   shakeSound: {fileID: 1758872265}
   consoleCodeCheck: {fileID: 1443673730}
+  consolePanel: {fileID: 1758872257}
   shakeIntensity: 2
   shakeSpeed: 18.4
   shutdownEffectImage: {fileID: 1298533728}
@@ -46023,9 +46024,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1758872264}
-        m_TargetAssemblyTypeName: PictureFolder, Assembly-CSharp
-        m_MethodName: CloseFolder
+      - m_Target: {fileID: 1758872263}
+        m_TargetAssemblyTypeName: ConsoleReset, Assembly-CSharp
+        m_MethodName: TryCloseConsolePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,9 +1,9 @@
-using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class ConsoleReset : MonoBehaviour
 {
@@ -12,8 +12,9 @@ public class ConsoleReset : MonoBehaviour
     public TextMeshProUGUI youOutputText;
     public Transform[] WindowsToReset;
     public AudioSource shakeSound;
-    public ConsoleCodeCheck consoleCodeCheck; 
+    public ConsoleCodeCheck consoleCodeCheck;
 
+    public GameObject consolePanel; 
     private List<string> numberSequence = new List<string>();
     private bool isTyping = false;
     private bool stopTyping = false;
@@ -51,7 +52,6 @@ public class ConsoleReset : MonoBehaviour
 
     void Update()
     {
-        
         if (consoleCodeCheck != null && consoleCodeCheck.codeAccepted)
         {
             StopNumbersAndSound();
@@ -231,6 +231,28 @@ public class ConsoleReset : MonoBehaviour
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(nextScene);
     }
+
+    
+    public bool IsTyping()
+    {
+        return isTyping;
+    }
+
+    
+    public void TryCloseConsolePanel()
+    {
+        if (IsTyping())
+        {
+            Debug.Log("Cannot close console while flashing numbers are active.");
+            return;
+        }
+
+        if (consolePanel != null)
+        {
+            consolePanel.SetActive(false);
+        }
+    }
 }
+
 
 
