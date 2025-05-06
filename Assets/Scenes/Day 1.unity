@@ -41522,6 +41522,7 @@ MonoBehaviour:
   - {fileID: 1828678024}
   shakeSound: {fileID: 0}
   consoleCodeCheck: {fileID: 0}
+  consolePanel: {fileID: 0}
   shakeIntensity: 2
   shakeSpeed: 50
   shutdownEffectImage: {fileID: 0}
@@ -50213,6 +50214,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1758872257}
   - {fileID: 1771655643}
+  - {fileID: 2002712753}
   fadeDuration: 3
 --- !u!1 &2090106184
 GameObject:
