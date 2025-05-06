@@ -2694,9 +2694,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VolumeMenuManager, Assembly-CSharp
-        m_MethodName: SetMusicVolume
+      - m_Target: {fileID: 264775490}
+        m_TargetAssemblyTypeName: BackgroundVolumeSlider, Assembly-CSharp
+        m_MethodName: SetSceneMusicVolume
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7010,6 +7010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 264775488}
   - component: {fileID: 264775489}
+  - component: {fileID: 264775490}
   m_Layer: 5
   m_Name: BackgroundSlider
   m_TagString: Untagged
@@ -7083,16 +7084,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 770148102}
   m_HandleRect: {fileID: 61278614}
   m_Direction: 0
-  m_MinValue: 0.0001
+  m_MinValue: 0.118
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VolumeMenuManager, Assembly-CSharp
-        m_MethodName: SetAmbienceVolume
+      - m_Target: {fileID: 264775490}
+        m_TargetAssemblyTypeName: BackgroundVolumeSlider, Assembly-CSharp
+        m_MethodName: SetBackgroundVolume
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7102,6 +7103,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &264775490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264775487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d8db84ada004844857feba0014dd39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundVolumeSlider: {fileID: 264775489}
+  secondaryVolumeSlider: {fileID: 2021258491}
+  sceneMusicSlider: {fileID: 102374440}
+  secondaryAudioSource1: {fileID: 178404460}
+  secondaryAudioSource2: {fileID: 0}
+  secondaryAudioSource3: {fileID: 0}
 --- !u!1 &279691076
 GameObject:
   m_ObjectHideFlags: 0
@@ -33237,7 +33256,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 966614725}
   m_HandleRect: {fileID: 775074168}
   m_Direction: 0
-  m_MinValue: 0.0001
+  m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -33245,8 +33264,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VolumeMenuManager, Assembly-CSharp
-        m_MethodName: SetMouseVolume
+        m_TargetAssemblyTypeName: MixerController, Assembly-CSharp
+        m_MethodName: SetVolume
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -51685,9 +51704,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VolumeMenuManager, Assembly-CSharp
-        m_MethodName: SetSFXVolume
+      - m_Target: {fileID: 264775490}
+        m_TargetAssemblyTypeName: BackgroundVolumeSlider, Assembly-CSharp
+        m_MethodName: SetSecondaryVolume
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

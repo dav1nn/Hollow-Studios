@@ -29834,6 +29834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1393369848}
   - component: {fileID: 1393369847}
+  - component: {fileID: 1393369849}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -29952,6 +29953,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1393369849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393369846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1afb2b0d79dd9b4680a70b7d1f2bd08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1399638014
 GameObject:
   m_ObjectHideFlags: 0
@@ -48089,6 +48102,7 @@ GameObject:
   - component: {fileID: 1895677836}
   - component: {fileID: 1895677835}
   - component: {fileID: 1895677838}
+  - component: {fileID: 1895677839}
   m_Layer: 0
   m_Name: Noah and Wall trigger
   m_TagString: Untagged
@@ -48257,6 +48271,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1895677839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895677834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba73d92227839943a9583daedff1e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1905117186
 GameObject:
   m_ObjectHideFlags: 0

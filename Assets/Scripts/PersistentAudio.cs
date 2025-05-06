@@ -5,6 +5,7 @@ public class PersistentAudio : MonoBehaviour
 {
     private static PersistentAudio instance;
     private AudioSource audioSource;
+
     public string[] stopScenes; 
 
     void Awake()
@@ -13,11 +14,11 @@ public class PersistentAudio : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            audioSource = GetComponent<AudioSource>(); 
+            audioSource = GetComponent<AudioSource>();
         }
         else
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
     }
 
@@ -48,14 +49,24 @@ public class PersistentAudio : MonoBehaviour
 
         if (shouldStop)
         {
-            audioSource.Pause(); 
+            audioSource.Pause();
         }
         else
         {
             if (!audioSource.isPlaying)
             {
-                audioSource.Play(); 
+                audioSource.Play();
             }
         }
+    }
+
+    
+    public static PersistentAudio Instance => instance;
+
+    
+    public void SetVolume(float volume)
+    {
+        if (audioSource != null)
+            audioSource.volume = volume;
     }
 }
