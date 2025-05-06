@@ -14,7 +14,13 @@ public class ImageEnlarger : MonoBehaviour
 
     private void Awake()
     {
-        if (enlargePanel != null) originalScale = enlargePanel.transform.localScale;
+        if (enlargePanel != null)
+        {
+            bool wasActive = enlargePanel.activeSelf;
+            enlargePanel.SetActive(true);
+            originalScale = enlargePanel.transform.localScale;
+            enlargePanel.SetActive(wasActive);
+        }
     }
 
     public void EnlargeImage(int index)
@@ -24,12 +30,16 @@ public class ImageEnlarger : MonoBehaviour
         descriptionText.text = descriptions[index];
         enlargePanel.SetActive(true);
         enlargePanel.transform.localScale = Vector3.zero;
-        StartCoroutine(AnimatePanelOpen(enlargePanel, 0.2f, originalScale));
+
+        CoroutineRunner.Instance.Run(AnimatePanelOpen(enlargePanel, 0.2f, originalScale));
     }
 
     public void CloseEnlargePanel()
     {
-        if (enlargePanel != null) StartCoroutine(AnimatePanelClose(enlargePanel, 0.2f));
+        if (enlargePanel != null)
+        {
+            CoroutineRunner.Instance.Run(AnimatePanelClose(enlargePanel, 0.2f));
+        }
     }
 
     private IEnumerator AnimatePanelOpen(GameObject panel, float duration, Vector3 targetScale)
