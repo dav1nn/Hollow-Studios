@@ -63,7 +63,7 @@ public class LoginValidator : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         feedbackText.text = "";
-        loginButton.GetComponentInChildren<TextMeshProUGUI>().text = "Login";
+        loginButton.GetComponentInChildren<TextMeshProUGUI>().text = "LOGIN";
         loginButton.GetComponent<Image>().color = Color.white;
         passwordField.text = "";
     }
