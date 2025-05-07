@@ -131,6 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 528926}
+  - component: {fileID: 528927}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -153,6 +154,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &528927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d8db84ada004844857feba0014dd39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundVolumeSlider: {fileID: 264775489}
+  secondaryVolumeSlider: {fileID: 2021258491}
+  sceneMusicSlider: {fileID: 102374440}
+  secondaryAudioSource1: {fileID: 178404460}
+  secondaryAudioSource2: {fileID: 0}
+  secondaryAudioSource3: {fileID: 0}
+  musicAudioSource: {fileID: 0}
 --- !u!1 &2207869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,7 +2660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 413, y: -144.99997}
+  m_AnchoredPosition: {x: 413, y: -42}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &102374440
@@ -2694,7 +2714,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 264775490}
+      - m_Target: {fileID: 528927}
         m_TargetAssemblyTypeName: BackgroundVolumeSlider, Assembly-CSharp
         m_MethodName: SetSceneMusicVolume
         m_Mode: 4
@@ -3820,7 +3840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -498.65997, y: -416}
+  m_AnchoredPosition: {x: -498.65997, y: -382.01477}
   m_SizeDelta: {x: 314.772, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &172009923
@@ -7010,7 +7030,6 @@ GameObject:
   m_Component:
   - component: {fileID: 264775488}
   - component: {fileID: 264775489}
-  - component: {fileID: 264775490}
   m_Layer: 5
   m_Name: BackgroundSlider
   m_TagString: Untagged
@@ -7091,7 +7110,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 264775490}
+      - m_Target: {fileID: 528927}
         m_TargetAssemblyTypeName: BackgroundVolumeSlider, Assembly-CSharp
         m_MethodName: SetBackgroundVolume
         m_Mode: 4
@@ -7103,24 +7122,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &264775490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264775487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d8db84ada004844857feba0014dd39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backgroundVolumeSlider: {fileID: 264775489}
-  secondaryVolumeSlider: {fileID: 2021258491}
-  sceneMusicSlider: {fileID: 102374440}
-  secondaryAudioSource1: {fileID: 178404460}
-  secondaryAudioSource2: {fileID: 0}
-  secondaryAudioSource3: {fileID: 0}
 --- !u!1 &279691076
 GameObject:
   m_ObjectHideFlags: 0
@@ -21208,7 +21209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -504.9248, y: -165.99997}
+  m_AnchoredPosition: {x: -504.9248, y: -63.0001}
   m_SizeDelta: {x: 308.795, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &938197681
@@ -33189,7 +33190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1344210477
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40237,7 +40238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1652720539
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51650,7 +51651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 413, y: -391.98526}
+  m_AnchoredPosition: {x: 413, y: -358}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021258491
@@ -51704,7 +51705,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 264775490}
+      - m_Target: {fileID: 528927}
         m_TargetAssemblyTypeName: BackgroundVolumeSlider, Assembly-CSharp
         m_MethodName: SetSecondaryVolume
         m_Mode: 4

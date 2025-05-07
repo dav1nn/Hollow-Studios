@@ -6,7 +6,7 @@ public class PersistentAudio : MonoBehaviour
     private static PersistentAudio instance;
     private AudioSource audioSource;
 
-    public string[] stopScenes; 
+    public string[] stopScenes;
 
     void Awake()
     {
@@ -60,13 +60,17 @@ public class PersistentAudio : MonoBehaviour
         }
     }
 
-    
     public static PersistentAudio Instance => instance;
 
-    
     public void SetVolume(float volume)
     {
         if (audioSource != null)
             audioSource.volume = volume;
+    }
+
+    
+    public float GetVolume()
+    {
+        return audioSource != null ? audioSource.volume : 1f;
     }
 }
