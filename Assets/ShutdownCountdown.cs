@@ -7,13 +7,17 @@ public class ShutdownCountdown : MonoBehaviour
 {
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI[] fadingTexts;
-    public TextMeshProUGUI restartPromptText;
+    public TextMeshProUGUI[] restartPromptTexts;
 
     private bool canRestart = false;
 
     private void Start()
     {
-        restartPromptText.gameObject.SetActive(false);
+        foreach (var text in restartPromptTexts)
+        {
+            text.gameObject.SetActive(false);
+        }
+
         StartCoroutine(StartShutdownSequence());
     }
 
@@ -73,7 +77,12 @@ public class ShutdownCountdown : MonoBehaviour
         }
 
         countdownText.gameObject.SetActive(false);
-        restartPromptText.gameObject.SetActive(true);
+
+        foreach (var text in restartPromptTexts)
+        {
+            text.gameObject.SetActive(true);
+        }
+
         canRestart = true;
     }
 }
