@@ -8,6 +8,25 @@ public class PersistentAudio : MonoBehaviour
 
     public string[] stopScenes;
 
+    
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void EnsureInstanceExists()
+    {
+        if (instance == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("PersistentAudio");
+            if (prefab != null)
+            {
+                GameObject obj = Instantiate(prefab);
+                Debug.Log("PersistentAudio: Auto-instantiated from prefab.");
+            }
+            else
+            {
+                Debug.LogError("PersistentAudio prefab not found in Resources!");
+            }
+        }
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -15,8 +34,11 @@ public class PersistentAudio : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             audioSource = GetComponent<AudioSource>();
+
+            if (audioSource != null && !audioSource.isPlaying)
+                audioSource.Play();
         }
-        else
+        else if (instance != this)
         {
             Destroy(gameObject);
         }
@@ -54,9 +76,7 @@ public class PersistentAudio : MonoBehaviour
         else
         {
             if (!audioSource.isPlaying)
-            {
                 audioSource.Play();
-            }
         }
     }
 
@@ -68,7 +88,6 @@ public class PersistentAudio : MonoBehaviour
             audioSource.volume = volume;
     }
 
-    
     public float GetVolume()
     {
         return audioSource != null ? audioSource.volume : 1f;

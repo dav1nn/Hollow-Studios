@@ -5,6 +5,7 @@ public class StartupLoader : MonoBehaviour
 {
     void Start()
     {
+        
         if (PlayerPrefs.HasKey("LastScene"))
         {
             string lastScene = PlayerPrefs.GetString("LastScene");

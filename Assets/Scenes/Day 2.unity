@@ -35025,7 +35025,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1661605242}
         m_TargetAssemblyTypeName: BackgroundVolumeSlider, Assembly-CSharp
         m_MethodName: SetSecondaryVolume
         m_Mode: 4
@@ -37407,7 +37407,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1661605242}
         m_TargetAssemblyTypeName: BackgroundVolumeSlider, Assembly-CSharp
         m_MethodName: SetBackgroundVolume
         m_Mode: 4
@@ -44276,9 +44276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d8db84ada004844857feba0014dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundVolumeSlider: {fileID: 0}
-  secondaryVolumeSlider: {fileID: 0}
-  sceneMusicSlider: {fileID: 0}
+  backgroundVolumeSlider: {fileID: 1351010232}
+  secondaryVolumeSlider: {fileID: 1286162271}
+  sceneMusicSlider: {fileID: 1836887529}
   secondaryAudioSource1: {fileID: 1007543106}
   secondaryAudioSource2: {fileID: 1758872265}
   secondaryAudioSource3: {fileID: 167055997}
@@ -50100,7 +50100,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1661605242}
         m_TargetAssemblyTypeName: BackgroundVolumeSlider, Assembly-CSharp
         m_MethodName: SetSceneMusicVolume
         m_Mode: 4
