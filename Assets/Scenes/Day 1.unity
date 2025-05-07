@@ -3840,8 +3840,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -328, y: -351}
-  m_SizeDelta: {x: 314.772, y: 50}
+  m_AnchoredPosition: {x: -335.446, y: -351}
+  m_SizeDelta: {x: 309.878, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &172009923
 MonoBehaviour:
@@ -3926,7 +3926,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.0001831155, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.0001831155, y: 0, z: 2.4469452, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4108,8 +4108,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -211, y: 104}
-  m_SizeDelta: {x: 324.734, y: 50}
+  m_AnchoredPosition: {x: -318.962, y: 104}
+  m_SizeDelta: {x: 263.409, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &178273158
 MonoBehaviour:
@@ -4194,7 +4194,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.0001831155, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.0001831155, y: 0, z: 0.00009915178, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -21209,8 +21209,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 247, y: -128}
-  m_SizeDelta: {x: 308.795, y: 50}
+  m_AnchoredPosition: {x: -99.224, y: -128}
+  m_SizeDelta: {x: 125.895, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &938197681
 MonoBehaviour:
@@ -21295,7 +21295,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.0001831155, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.0001831155, y: 0, z: 0.000022907234, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
