@@ -25,7 +25,13 @@ public class ShutdownCountdown : MonoBehaviour
     {
         if (canRestart && Input.GetKeyDown(KeyCode.Space))
         {
+            if (PersistentAudio.Instance != null)
+                Destroy(PersistentAudio.Instance.gameObject);
+
             PlayerPrefs.DeleteAll();
+            PlayerPrefs.SetInt("DisablePersistentAudio", 1);
+            PlayerPrefs.Save();
+
             SceneManager.LoadScene("Intro");
         }
     }
@@ -86,3 +92,4 @@ public class ShutdownCountdown : MonoBehaviour
         canRestart = true;
     }
 }
+
