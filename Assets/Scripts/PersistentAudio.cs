@@ -8,21 +8,18 @@ public class PersistentAudio : MonoBehaviour
 
     public string[] stopScenes;
 
-    
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void EnsureInstanceExists()
     {
+        if (PlayerPrefs.HasKey("DisablePersistentAudio"))
+            return;
+
         if (instance == null)
         {
             GameObject prefab = Resources.Load<GameObject>("PersistentAudio");
             if (prefab != null)
             {
                 GameObject obj = Instantiate(prefab);
-                Debug.Log("PersistentAudio: Auto-instantiated from prefab.");
-            }
-            else
-            {
-                Debug.LogError("PersistentAudio prefab not found in Resources!");
             }
         }
     }
@@ -93,3 +90,4 @@ public class PersistentAudio : MonoBehaviour
         return audioSource != null ? audioSource.volume : 1f;
     }
 }
+

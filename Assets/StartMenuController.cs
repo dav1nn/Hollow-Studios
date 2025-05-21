@@ -84,7 +84,13 @@ public class StartMenuController : MonoBehaviour
 
     public void ConfirmRestart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (PersistentAudio.Instance != null)
+            Destroy(PersistentAudio.Instance.gameObject);
+
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("DisablePersistentAudio", 1);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("Intro");
     }
 
     public void CancelRestart()
@@ -125,3 +131,5 @@ public class StartMenuController : MonoBehaviour
         restartText.gameObject.SetActive(true);
     }
 }
+
+

@@ -653,6 +653,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368337763}
   m_CullTransparentMesh: 1
+--- !u!1001 &571494833
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1700916234790444466, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.6345167
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700916234790444466, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -30.556965
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700916234790444466, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.0833597
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700916234790444466, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700916234790444466, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700916234790444466, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700916234790444466, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700916234790444466, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700916234790444466, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700916234790444466, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206676102344219603, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: stopScenes.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206676102344219603, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: stopScenes.Array.data[5]
+      value: Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206676102344219603, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: stopScenes.Array.data[6]
+      value: Intro 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223034586682063395, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
+      propertyPath: m_Name
+      value: PersistentAudio
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 07fdd85e71509a243b9e1fb80f811278, type: 3}
 --- !u!1 &610791898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1200,7 @@ GameObject:
   - component: {fileID: 1420272946}
   - component: {fileID: 1420272945}
   - component: {fileID: 1420272947}
+  - component: {fileID: 1420272948}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1238,6 +1308,18 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &1420272948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420272944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b341c9ee83a5b2d4c8ce28fc3e969838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1730697599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,3 +1501,4 @@ SceneRoots:
   - {fileID: 738488614}
   - {fileID: 623789028}
   - {fileID: 685324747}
+  - {fileID: 571494833}
